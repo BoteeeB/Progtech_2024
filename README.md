@@ -1,1 +1,6 @@
-# Progtech_2024
+# Progtech beadandó
+
+## Tagok: 
+* ### Erdélyi Patrik
+
+* ### Bárdos Botond
