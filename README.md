@@ -1,6 +1,6 @@
 # Progtech beadandó
 
 ## Tagok: 
-* ### Erdélyi Patrik
+* ### [Erdélyi Patrik](https://github.com/Patrik1866)
 
-* ### Bárdos Botond
+* ### [Bárdos Botond](https://github.com/BoteeeB)  
