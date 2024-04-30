@@ -181,3 +181,13 @@ Rendben, itt van az átdolgozott Funkcionális terv a nyilvántartó rendszerhez
 
 | Tesztszám | Rövid leírás | Várt eredmény | Eredmény | Megjegyzés |
 | --------- | ------------ | ------------- | -------- | ---------- |
+
+## 11. Telepítési terv
+
+## Fizikai telepítés:
+
+- Fizikai módon való telepítésre nincs szüksség, egy jar fájlal futtatható
+
+## Szoftver telepítés:
+
+- Java 20.0.1 telepítése szükséges
