@@ -71,3 +71,16 @@ Ezáltal a rendszer lehetőséget biztosít a bolt tulajdonosának vagy alkalmaz
 | K4 | Termék törlése | Felhasználóknak lehetőséget biztosítani meglévő termékek törlésére a rendszerből. |
 | K5 | Termék módosítása | Lehetőség nyújtása a felhasználók számára a meglévő termékek adatainak módosításához, például az ár vagy leírás frissítéséhez. |
 | K6 | "Emergency delete" | Egy speciális funkció, amely lehetővé teszi az összes termék törlését a rendszerből egyetlen kattintással. Fontos, hogy ez a funkció csak körültekintően legyen elérhető, és legyen megfelelően biztosítva az esetleges véletlen törlés vagy visszaélések ellen. |
+
+### 4.2 Nemfunkcionális követelmények
+
+| ID  | Megnevezés              | Leírás                                                                      |
+| --- | ----------------------- | --------------------------------------------------------------------------- |
+| K3  | Jogosultsági szintek    | Hozzáférési jogok megfelelő kezelése a rendszerben.                        |
+| K10 | Teljesítmény, skálázhatóság | Gyors működés és a rendszer skálázhatósága még akkor is, ha sok felhasználó egyidejűleg használja. |
+| K11 | Biztonság               | Felhasználók adatainak védelme illetéktelen hozzáféréstől.                  |
+| K12 | Felhasználói élmény     | Könnyen átlátható, felhasználóbarát felület biztosítása a gyorsabb kezelhetőség érdekében. |
+| K13 | Kompatibilitás          | Különböző eszközök és böngészők támogatása, reszponzív UI biztosítása. |
+
+### 4.3 Támogatott eszközök
+Asztali számítógépek, hordozható számítógépek.
