@@ -27,3 +27,13 @@ Ezáltal a rendszer lehetőséget biztosít a bolt tulajdonosának vagy alkalmaz
 
 #### Tesztelés:
    * Funkcionális és UI tesztelők: Bárdos Botond, Erdélyi Patrik
+
+### 2.3 Ütemterv:
+
+|Funkció                  | Feladat                                | Prioritás | Becslés (nap) | Aktuális becslés (nap) | Eltelt idő (nap) | Becsült idő (nap) |
+|-------------------------|----------------------------------------|-----------|---------------|------------------------|------------------|---------------------|
+|Rendszerterv             |Megírás                                 |         1 |             2 |                      2 |                2 |                   2 |
+|Felhasználói felület     |Képernyőtervek elkészítése              |         2 |             9 |                      9 |                1 |                   9 |
+|Felhasználói felület     |Prototípus elkészítése                  |         3 |            28 |                     28 |                1 |                  28 |
+|Felhasználói felület     |Alapfunkciók elkészítése                |         3 |            21 |                     21 |                1 |                  21 |
+|Tesztelés                |Tesztelés                               |         4 |            21 |                     21 |                1 |                  21 |
