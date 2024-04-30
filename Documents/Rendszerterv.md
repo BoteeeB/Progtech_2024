@@ -84,3 +84,31 @@ Ezáltal a rendszer lehetőséget biztosít a bolt tulajdonosának vagy alkalmaz
 
 ### 4.3 Támogatott eszközök
 Asztali számítógépek, hordozható számítógépek.
+
+Rendben, itt van az átdolgozott Funkcionális terv a nyilvántartó rendszerhez:
+
+## 5. Funkcionális terv
+
+### Rendszerszereplők:
+
+- **Adminisztrátor**
+- **Felhasználó**
+  - Ügyfél
+  - Dolgozó
+
+### Rendszerhasználati esetek és lefutásaik:
+
+- **Felhasználó**
+  - Bejelentkezés a rendszerbe
+  - Regisztráció a rendszerbe (csak ügyfelek számára)
+  - Termékek, készletek böngészése
+  - Termék hozzáadása a nyilvántartáshoz (csak dolgozók számára)
+  - Termék törlése a nyilvántartásból (csak dolgozók számára)
+  - Termék módosítása a nyilvántartásban (csak dolgozók számára)
+  - Ügyfél adatainak megtekintése és módosítása (csak ügyfelek számára)
+  - Rendelés leadása (csak ügyfelek számára)
+  - Rendelés státuszának ellenőrzése (csak ügyfelek számára)
+- **Adminisztrátor**
+  - Felhasználók kezelése (új felhasználó hozzáadása, meglévő felhasználó törlése)
+  - Termékek, készletek kezelése (hozzáadás, törlés, módosítás)
+  - Rendelések kezelése és státuszuk frissítése
