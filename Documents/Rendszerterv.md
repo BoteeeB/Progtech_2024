@@ -191,3 +191,10 @@ Rendben, itt van az átdolgozott Funkcionális terv a nyilvántartó rendszerhez
 ## Szoftver telepítés:
 
 - Java 20.0.1 telepítése szükséges
+
+## 12. Karbantartási terv
+
+### Figyelembe kell venni a felhasználók által jött visszajelzéseket a programmal kapcsolatban. Ha hibát talált, mielőbb orvosolni kell, lehet az:
+
+- Működéssel kapcsolatos
+- Kinézeti, vagy dizájnnal kapcsolatos (UI)
