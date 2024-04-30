@@ -3,86 +3,94 @@
 ## 1. A rendszer célja
 
 A rendszer célja egy JavaFX alapú nyilvántartó rendszer létrehozása egy kisbolt számára. A rendszer lehetővé teszi a felhasználók számára, hogy regisztráljanak és bejelentkezzenek, valamint kezeljék a bolt termékeinek nyilvántartását. A rendszer főbb funkcionalitásai közé tartozik:
-   * Felhasználók regisztrációja és bejelentkezése: A felhasználók képesek lesznek regisztrálni a rendszerbe, majd bejelentkezni az azonosítójukkal és jelszavukkal.
-   * Termékek kezelése: A felhasználók hozzáadhatnak új termékeket a rendszerhez, törölhetik vagy módosíthatják meglévő termékeket.
-   * Termékek nyilvántartása: A rendszer nyomon követi a boltban lévő termékek mennyiségét, valamint lehetőséget biztosít a készletállomány frissítésére és kezelésére.
-   
+
+- Felhasználók regisztrációja és bejelentkezése: A felhasználók képesek lesznek regisztrálni a rendszerbe, majd bejelentkezni az azonosítójukkal és jelszavukkal.
+- Termékek kezelése: A felhasználók hozzáadhatnak új termékeket a rendszerhez, törölhetik vagy módosíthatják meglévő termékeket.
+- Termékek nyilvántartása: A rendszer nyomon követi a boltban lévő termékek mennyiségét, valamint lehetőséget biztosít a készletállomány frissítésére és kezelésére.
+
 Ezáltal a rendszer lehetőséget biztosít a bolt tulajdonosának vagy alkalmazottainak hatékonyan kezelni a bolt termékeinek állományát és nyilvántartását.
 
 ## 2. Projektterv
 
 ### 2.1 Projektszerepkörök, felelősségek:
-* Scrum master: Troll Ede
-* Product owner: Troll Ede
-* Üzleti szereplő: N/A
+
+- Scrum master: Troll Ede
+- Product owner: Troll Ede
+- Üzleti szereplő: N/A
 
 ### 2.2 Projektmunkások és felelőségek:
 
 #### JavaFX UI:
-   * UI tervező és fejlesztők: Bárdos Botond, Erdélyi Patrik
+
+- UI tervező és fejlesztők: Bárdos Botond, Erdélyi Patrik
 
 #### Backend:
-   * Rendszerarchitektúra és adatbázis tervezők: Bárdos Botond, Erdélyi Patrik
-   * Backend fejlesztők: Erdélyi Patrik, Bárdos Botond
+
+- Rendszerarchitektúra és adatbázis tervezők: Bárdos Botond, Erdélyi Patrik
+- Backend fejlesztők: Erdélyi Patrik, Bárdos Botond
 
 #### Tesztelés:
-   * Funkcionális és UI tesztelők: Bárdos Botond, Erdélyi Patrik
+
+- Funkcionális és UI tesztelők: Bárdos Botond, Erdélyi Patrik
 
 ### 2.3 Ütemterv:
 
-|Funkció                  | Feladat                                | Prioritás | Becslés (nap) | Aktuális becslés (nap) | Eltelt idő (nap) | Becsült idő (nap) |
-|-------------------------|----------------------------------------|-----------|---------------|------------------------|------------------|---------------------|
-|Rendszerterv             |Megírás                                 |         1 |             2 |                      2 |                2 |                   2 |
-|Felhasználói felület     |Képernyőtervek elkészítése              |         2 |             9 |                      9 |                1 |                   9 |
-|Felhasználói felület     |Prototípus elkészítése                  |         3 |            28 |                     28 |                1 |                  28 |
-|Felhasználói felület     |Alapfunkciók elkészítése                |         3 |            21 |                     21 |                1 |                  21 |
-|Tesztelés                |Tesztelés                               |         4 |            21 |                     21 |                1 |                  21 |
+| Funkció              | Feladat                    | Prioritás | Becslés (nap) | Aktuális becslés (nap) | Eltelt idő (nap) | Becsült idő (nap) |
+| -------------------- | -------------------------- | --------- | ------------- | ---------------------- | ---------------- | ----------------- |
+| Rendszerterv         | Megírás                    | 1         | 2             | 2                      | 2                | 2                 |
+| Felhasználói felület | Képernyőtervek elkészítése | 2         | 9             | 9                      | 1                | 9                 |
+| Felhasználói felület | Prototípus elkészítése     | 3         | 28            | 28                     | 1                | 28                |
+| Felhasználói felület | Alapfunkciók elkészítése   | 3         | 21            | 21                     | 1                | 21                |
+| Tesztelés            | Tesztelés                  | 4         | 21            | 21                     | 1                | 21                |
 
 ### 2.4 Mérföldkövek:
-   * Projektterv kidolgozása
-   * Dokumentációk (specifikációk) véglegesítése
-   * Prototípus átadása
-   * Tesztelés és hibák kijavítása
-   * Bemutatás
+
+- Projektterv kidolgozása
+- Dokumentációk (specifikációk) véglegesítése
+- Prototípus átadása
+- Tesztelés és hibák kijavítása
+- Bemutatás
 
 ## 3. Üzleti folyamatok modellje
 
 ### 3.1 Üzleti szereplők
 
-* Üzleti tulajdonos: A kisbolt tulajdonosa vagy üzletvezetője, aki felelős a bolt napi működéséért és a stratégiai döntések meghozataláért.
-* Bolt alkalmazottak: Azok az egyének, akik a boltban dolgoznak, például eladók, raktárosok vagy pénztárosok, és felelősek a termékek kezeléséért, értékesítéséért és ügyfélszolgálatáért.
-* Vásárlók: Azok a személyek, akik a boltban vásárolnak termékeket és szolgáltatásokat.
+- Üzleti tulajdonos: A kisbolt tulajdonosa vagy üzletvezetője, aki felelős a bolt napi működéséért és a stratégiai döntések meghozataláért.
+- Bolt alkalmazottak: Azok az egyének, akik a boltban dolgoznak, például eladók, raktárosok vagy pénztárosok, és felelősek a termékek kezeléséért, értékesítéséért és ügyfélszolgálatáért.
+- Vásárlók: Azok a személyek, akik a boltban vásárolnak termékeket és szolgáltatásokat.
 
 ### 3.2 Üzleti folyamatok
-* Termékkezelési folyamat: Ez a folyamat magában foglalja a boltban kapható termékek nyilvántartását, raktározását, készletkezelését és frissítését.
-* Vásárlási folyamat: A vásárlók által végzett tranzakciók folyamata, ideértve a termékek kiválasztását, kosárba helyezését, fizetési folyamatot és vásárlás végrehajtását.
-* Vevőszolgálati folyamat: Az ügyfelekkel való kommunikáció és kapcsolattartás folyamata, beleértve a kérdések megválaszolását, panaszok kezelését és kifizetett szolgáltatások nyomon követését.
-* Rendeléskezelési folyamat: A termékek rendelésétől a kiszállításig terjedő folyamat, ideértve a megrendelések rögzítését, csomagolást és szállítást.
+
+- Termékkezelési folyamat: Ez a folyamat magában foglalja a boltban kapható termékek nyilvántartását, raktározását, készletkezelését és frissítését.
+- Vásárlási folyamat: A vásárlók által végzett tranzakciók folyamata, ideértve a termékek kiválasztását, kosárba helyezését, fizetési folyamatot és vásárlás végrehajtását.
+- Vevőszolgálati folyamat: Az ügyfelekkel való kommunikáció és kapcsolattartás folyamata, beleértve a kérdések megválaszolását, panaszok kezelését és kifizetett szolgáltatások nyomon követését.
+- Rendeléskezelési folyamat: A termékek rendelésétől a kiszállításig terjedő folyamat, ideértve a megrendelések rögzítését, csomagolást és szállítást.
 
 ## 4. Követelmények
 
 ### 4.1 Funkcionális követelmények
 
-| ID | Megnevezés | Leírás |
-| --- | --- | --- |
-| K1 | Regisztráció | A felhasználó lehetőséget kap a rendszerbe történő regisztrációhoz, megadva szükséges információkat, mint például felhasználónév, email cím és jelszó. |
-| K2 | Bejelentkezés | A felhasználó a rendszerbe való belépéshez megadhatja az email címét és jelszavát. |
-| K3 | Termék hozzáadása | Lehetőség nyújtása a felhasználók számára új termékek hozzáadásához a rendszerhez, megadva a termék nevét, leírását, árát és egyéb releváns információkat. |
-| K4 | Termék törlése | Felhasználóknak lehetőséget biztosítani meglévő termékek törlésére a rendszerből. |
-| K5 | Termék módosítása | Lehetőség nyújtása a felhasználók számára a meglévő termékek adatainak módosításához, például az ár vagy leírás frissítéséhez. |
-| K6 | "Emergency delete" | Egy speciális funkció, amely lehetővé teszi az összes termék törlését a rendszerből egyetlen kattintással. Fontos, hogy ez a funkció csak körültekintően legyen elérhető, és legyen megfelelően biztosítva az esetleges véletlen törlés vagy visszaélések ellen. |
+| ID  | Megnevezés         | Leírás                                                                                                                                                                                                                                                           |
+| --- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| K1  | Regisztráció       | A felhasználó lehetőséget kap a rendszerbe történő regisztrációhoz, megadva szükséges információkat, mint például felhasználónév, email cím és jelszó.                                                                                                           |
+| K2  | Bejelentkezés      | A felhasználó a rendszerbe való belépéshez megadhatja az email címét és jelszavát.                                                                                                                                                                               |
+| K3  | Termék hozzáadása  | Lehetőség nyújtása a felhasználók számára új termékek hozzáadásához a rendszerhez, megadva a termék nevét, leírását, árát és egyéb releváns információkat.                                                                                                       |
+| K4  | Termék törlése     | Felhasználóknak lehetőséget biztosítani meglévő termékek törlésére a rendszerből.                                                                                                                                                                                |
+| K5  | Termék módosítása  | Lehetőség nyújtása a felhasználók számára a meglévő termékek adatainak módosításához, például az ár vagy leírás frissítéséhez.                                                                                                                                   |
+| K6  | "Emergency delete" | Egy speciális funkció, amely lehetővé teszi az összes termék törlését a rendszerből egyetlen kattintással. Fontos, hogy ez a funkció csak körültekintően legyen elérhető, és legyen megfelelően biztosítva az esetleges véletlen törlés vagy visszaélések ellen. |
 
 ### 4.2 Nemfunkcionális követelmények
 
-| ID  | Megnevezés              | Leírás                                                                      |
-| --- | ----------------------- | --------------------------------------------------------------------------- |
-| K3  | Jogosultsági szintek    | Hozzáférési jogok megfelelő kezelése a rendszerben.                        |
+| ID  | Megnevezés                  | Leírás                                                                                             |
+| --- | --------------------------- | -------------------------------------------------------------------------------------------------- |
+| K3  | Jogosultsági szintek        | Hozzáférési jogok megfelelő kezelése a rendszerben.                                                |
 | K10 | Teljesítmény, skálázhatóság | Gyors működés és a rendszer skálázhatósága még akkor is, ha sok felhasználó egyidejűleg használja. |
-| K11 | Biztonság               | Felhasználók adatainak védelme illetéktelen hozzáféréstől.                  |
-| K12 | Felhasználói élmény     | Könnyen átlátható, felhasználóbarát felület biztosítása a gyorsabb kezelhetőség érdekében. |
-| K13 | Kompatibilitás          | Különböző eszközök és böngészők támogatása, reszponzív UI biztosítása. |
+| K11 | Biztonság                   | Felhasználók adatainak védelme illetéktelen hozzáféréstől.                                         |
+| K12 | Felhasználói élmény         | Könnyen átlátható, felhasználóbarát felület biztosítása a gyorsabb kezelhetőség érdekében.         |
+| K13 | Kompatibilitás              | Különböző eszközök és böngészők támogatása, reszponzív UI biztosítása.                             |
 
 ### 4.3 Támogatott eszközök
+
 Asztali számítógépek, hordozható számítógépek.
 
 Rendben, itt van az átdolgozott Funkcionális terv a nyilvántartó rendszerhez:
@@ -116,12 +124,27 @@ Rendben, itt van az átdolgozott Funkcionális terv a nyilvántartó rendszerhez
 ## 6. Fizikai környezet
 
 ### Vásárolt softwarekomponensek és külső rendszerek:
-* Nincsenek megvásárolt komponensek.
+
+- Nincsenek megvásárolt komponensek.
+
 ### Hardver topológia:
-* Az alkalmazás helyi számítógépen fut, amely egy dedikált MySQL adatbázis-szerverhez kapcsolódik.
+
+- Az alkalmazás helyi számítógépen fut, amely egy dedikált MySQL adatbázis-szerverhez kapcsolódik.
+
 ### Fizikai alrendszerek:
-* Az alkalmazás backendje JAVA, JavaFX-es ablakos alkalmazással megjelenítve.
+
+- Az alkalmazás backendje JAVA, JavaFX-es ablakos alkalmazással megjelenítve.
+
 ### Fejlesztő eszközök:
-* IntelliJ IDEA
-* Postman
-* Git
+
+- IntelliJ IDEA
+- Postman
+- Git
+
+## 7. Adatbázis terv
+
+### Táblák
+
+- Termékek: ID, Name, Type, Price
+- Felhasználók: ID, Name, Password, Email
+-
