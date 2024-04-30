@@ -52,3 +52,9 @@ Ezáltal a rendszer lehetőséget biztosít a bolt tulajdonosának vagy alkalmaz
 * Üzleti tulajdonos: A kisbolt tulajdonosa vagy üzletvezetője, aki felelős a bolt napi működéséért és a stratégiai döntések meghozataláért.
 * Bolt alkalmazottak: Azok az egyének, akik a boltban dolgoznak, például eladók, raktárosok vagy pénztárosok, és felelősek a termékek kezeléséért, értékesítéséért és ügyfélszolgálatáért.
 * Vásárlók: Azok a személyek, akik a boltban vásárolnak termékeket és szolgáltatásokat.
+
+### 3.2 Üzleti folyamatok
+* Termékkezelési folyamat: Ez a folyamat magában foglalja a boltban kapható termékek nyilvántartását, raktározását, készletkezelését és frissítését.
+* Vásárlási folyamat: A vásárlók által végzett tranzakciók folyamata, ideértve a termékek kiválasztását, kosárba helyezését, fizetési folyamatot és vásárlás végrehajtását.
+* Vevőszolgálati folyamat: Az ügyfelekkel való kommunikáció és kapcsolattartás folyamata, beleértve a kérdések megválaszolását, panaszok kezelését és kifizetett szolgáltatások nyomon követését.
+* Rendeléskezelési folyamat: A termékek rendelésétől a kiszállításig terjedő folyamat, ideértve a megrendelések rögzítését, csomagolást és szállítást.
