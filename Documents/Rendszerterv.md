@@ -53,7 +53,7 @@ Ezáltal a rendszer lehetőséget biztosít a bolt tulajdonosának vagy alkalmaz
 * Bolt alkalmazottak: Azok az egyének, akik a boltban dolgoznak, például eladók, raktárosok vagy pénztárosok, és felelősek a termékek kezeléséért, értékesítéséért és ügyfélszolgálatáért.
 * Vásárlók: Azok a személyek, akik a boltban vásárolnak termékeket és szolgáltatásokat.
 
-### 3.2 Üzleti folyamatok
+### 3.2 Üzleti folyamatok
 * Termékkezelési folyamat: Ez a folyamat magában foglalja a boltban kapható termékek nyilvántartását, raktározását, készletkezelését és frissítését.
 * Vásárlási folyamat: A vásárlók által végzett tranzakciók folyamata, ideértve a termékek kiválasztását, kosárba helyezését, fizetési folyamatot és vásárlás végrehajtását.
 * Vevőszolgálati folyamat: Az ügyfelekkel való kommunikáció és kapcsolattartás folyamata, beleértve a kérdések megválaszolását, panaszok kezelését és kifizetett szolgáltatások nyomon követését.
