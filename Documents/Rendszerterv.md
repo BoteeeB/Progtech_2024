@@ -163,3 +163,21 @@ Rendben, itt van az átdolgozott Funkcionális terv a nyilvántartó rendszerhez
 
 - Az alkalmazás Java nyelven fog készülni JavaFX ablakos megjelenítővel. Különböző technológiákat nem használunk hozzá annak érdekében, hogy később könnyebben bővíthessük, és mások számára is olvashatóbbá váljon.
 - Az adatokat MySQL adatbázisban fogjuk tárolni
+
+## 10. Tesztterv
+
+- Az alkalmazásunkat unit tesztek segítségével fogjuk ellenőrizni és tesztelni, emellett manuálisan is tesztelni a komponenseket, amiket mindenki fog végezni a csapatból
+
+- Tesztesetek
+
+| Teszteset | Elvárt eredmény |
+| --------- | --------------- |
+
+- A tesztelési jegyzőkönyv kitöltésére egy sablon:
+
+**Tesztelő:**
+
+**Tesztelés dátuma:**
+
+| Tesztszám | Rövid leírás | Várt eredmény | Eredmény | Megjegyzés |
+| --------- | ------------ | ------------- | -------- | ---------- |
