@@ -44,3 +44,11 @@ Ezáltal a rendszer lehetőséget biztosít a bolt tulajdonosának vagy alkalmaz
    * Prototípus átadása
    * Tesztelés és hibák kijavítása
    * Bemutatás
+
+## 3. Üzleti folyamatok modellje
+
+### 3.1 Üzleti szereplők
+
+* Üzleti tulajdonos: A kisbolt tulajdonosa vagy üzletvezetője, aki felelős a bolt napi működéséért és a stratégiai döntések meghozataláért.
+* Bolt alkalmazottak: Azok az egyének, akik a boltban dolgoznak, például eladók, raktárosok vagy pénztárosok, és felelősek a termékek kezeléséért, értékesítéséért és ügyfélszolgálatáért.
+* Vásárlók: Azok a személyek, akik a boltban vásárolnak termékeket és szolgáltatásokat.
