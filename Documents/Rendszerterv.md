@@ -112,3 +112,16 @@ Rendben, itt van az átdolgozott Funkcionális terv a nyilvántartó rendszerhez
   - Felhasználók kezelése (új felhasználó hozzáadása, meglévő felhasználó törlése)
   - Termékek, készletek kezelése (hozzáadás, törlés, módosítás)
   - Rendelések kezelése és státuszuk frissítése
+
+## 6. Fizikai környezet
+
+### Vásárolt softwarekomponensek és külső rendszerek:
+* Nincsenek megvásárolt komponensek.
+### Hardver topológia:
+* Az alkalmazás helyi számítógépen fut, amely egy dedikált MySQL adatbázis-szerverhez kapcsolódik.
+### Fizikai alrendszerek:
+* Az alkalmazás backendje JAVA, JavaFX-es ablakos alkalmazással megjelenítve.
+### Fejlesztő eszközök:
+* IntelliJ IDEA
+* Postman
+* Git
