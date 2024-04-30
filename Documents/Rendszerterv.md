@@ -158,3 +158,8 @@ Rendben, itt van az átdolgozott Funkcionális terv a nyilvántartó rendszerhez
 ### Program elérése, kezelése:
 
 - Az alkalmazás elérhető saját gépen, letöltés után egy jar fájlal futtatható.
+
+## 9. Implementációs terv
+
+- Az alkalmazás Java nyelven fog készülni JavaFX ablakos megjelenítővel. Különböző technológiákat nem használunk hozzá annak érdekében, hogy később könnyebben bővíthessük, és mások számára is olvashatóbbá váljon.
+- Az adatokat MySQL adatbázisban fogjuk tárolni
