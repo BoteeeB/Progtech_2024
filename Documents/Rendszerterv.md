@@ -37,3 +37,10 @@ Ezáltal a rendszer lehetőséget biztosít a bolt tulajdonosának vagy alkalmaz
 |Felhasználói felület     |Prototípus elkészítése                  |         3 |            28 |                     28 |                1 |                  28 |
 |Felhasználói felület     |Alapfunkciók elkészítése                |         3 |            21 |                     21 |                1 |                  21 |
 |Tesztelés                |Tesztelés                               |         4 |            21 |                     21 |                1 |                  21 |
+
+### 2.4 Mérföldkövek:
+   * Projektterv kidolgozása
+   * Dokumentációk (specifikációk) véglegesítése
+   * Prototípus átadása
+   * Tesztelés és hibák kijavítása
+   * Bemutatás
