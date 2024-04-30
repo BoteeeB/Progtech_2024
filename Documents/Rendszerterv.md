@@ -58,3 +58,16 @@ Ezáltal a rendszer lehetőséget biztosít a bolt tulajdonosának vagy alkalmaz
 * Vásárlási folyamat: A vásárlók által végzett tranzakciók folyamata, ideértve a termékek kiválasztását, kosárba helyezését, fizetési folyamatot és vásárlás végrehajtását.
 * Vevőszolgálati folyamat: Az ügyfelekkel való kommunikáció és kapcsolattartás folyamata, beleértve a kérdések megválaszolását, panaszok kezelését és kifizetett szolgáltatások nyomon követését.
 * Rendeléskezelési folyamat: A termékek rendelésétől a kiszállításig terjedő folyamat, ideértve a megrendelések rögzítését, csomagolást és szállítást.
+
+## 4. Követelmények
+
+### 4.1 Funkcionális követelmények
+
+| ID | Megnevezés | Leírás |
+| --- | --- | --- |
+| K1 | Regisztráció | A felhasználó lehetőséget kap a rendszerbe történő regisztrációhoz, megadva szükséges információkat, mint például felhasználónév, email cím és jelszó. |
+| K2 | Bejelentkezés | A felhasználó a rendszerbe való belépéshez megadhatja az email címét és jelszavát. |
+| K3 | Termék hozzáadása | Lehetőség nyújtása a felhasználók számára új termékek hozzáadásához a rendszerhez, megadva a termék nevét, leírását, árát és egyéb releváns információkat. |
+| K4 | Termék törlése | Felhasználóknak lehetőséget biztosítani meglévő termékek törlésére a rendszerből. |
+| K5 | Termék módosítása | Lehetőség nyújtása a felhasználók számára a meglévő termékek adatainak módosításához, például az ár vagy leírás frissítéséhez. |
+| K6 | "Emergency delete" | Egy speciális funkció, amely lehetővé teszi az összes termék törlését a rendszerből egyetlen kattintással. Fontos, hogy ez a funkció csak körültekintően legyen elérhető, és legyen megfelelően biztosítva az esetleges véletlen törlés vagy visszaélések ellen. |
