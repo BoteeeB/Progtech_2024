@@ -143,8 +143,18 @@ Rendben, itt van az átdolgozott Funkcionális terv a nyilvántartó rendszerhez
 
 ## 7. Adatbázis terv
 
-### Táblák
+### Táblák:
 
 - Termékek: ID, Name, Type, Price
 - Felhasználók: ID, Name, Password, Email
 -
+
+## 8. Architekturális terv
+
+### Adatbázis rendszer:
+
+- Az alkalmazás MySQL adatbázist használ, ami lehetővé teszi hogy gyorsan és könnyen hozzáférjenek az adatokhoz valós időben.
+
+### Program elérése, kezelése:
+
+- Az alkalmazás elérhető saját gépen, letöltés után egy jar fájlal futtatható.
