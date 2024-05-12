@@ -9,15 +9,22 @@ import java.io.IOException;
 
 public class NyilvantartoApp extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(NyilvantartoApp.class.getResource("Nyilvantarto.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 500);
-        stage.setTitle("Nyilvántartó rendszer");
-        stage.setScene(scene);
-        stage.show();
-    }
+    public void start(Stage primaryStage) throws IOException {
+        // Betöltjük a bejelentkezési/regisztrációs felületet
+        FXMLLoader loginLoader = new FXMLLoader(NyilvantartoApp.class.getResource("Login_Register.fxml"));
+        Scene loginScene = new Scene(loginLoader.load());
 
-    public static void main(String[] args) {
-        launch();
+        // Létrehozunk egy új ablakot a bejelentkezési/regisztrációs felületnek
+        Stage loginStage = new Stage();
+        loginStage.setTitle("Nyilvántartó rendszer");
+        loginStage.setScene(loginScene);
+        loginStage.showAndWait();  // Megjelenítjük az ablakot és várunk, amíg a felhasználó be nem zárja
+
+        // Miután a felhasználó bejelentkezett/regisztrált, betöltjük a fő alkalmazás felületét
+        FXMLLoader mainLoader = new FXMLLoader(NyilvantartoApp.class.getResource("Nyilvantarto.fxml"));
+        Scene mainScene = new Scene(mainLoader.load(), 1000, 500);
+        primaryStage.setTitle("Nyilvántartó rendszer");
+        primaryStage.setScene(mainScene);
+        primaryStage.show();
     }
 }
