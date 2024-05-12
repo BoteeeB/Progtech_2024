@@ -11,8 +11,8 @@ public class NyilvantartoApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(NyilvantartoApp.class.getResource("Nyilvantarto.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 500);
+        stage.setTitle("Nyilvántartó rendszer");
         stage.setScene(scene);
         stage.show();
     }

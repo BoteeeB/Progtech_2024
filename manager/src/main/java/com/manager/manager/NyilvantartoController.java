@@ -5,10 +5,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.io.*;
+import java.sql.*;
 import java.util.Optional;
 import java.util.Properties;
 
 public class NyilvantartoController {
+
+    private static final String URL = "jdbc:mysql://localhost:3306/nyilvantartas";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
+
 
     @FXML
     private ListView<Product> productList;
@@ -20,8 +26,6 @@ public class NyilvantartoController {
     private TextField priceField;
 
     private ObservableList<Product> products;
-
-    private static final String PROPERTIES_FILE = "nyilvantartas.properties";
 
     public NyilvantartoController() {
         this.products = FXCollections.observableArrayList();
@@ -65,15 +69,26 @@ public class NyilvantartoController {
 
             if (!newName.isEmpty() && !newPriceText.isEmpty()) {
                 double newPrice = Double.parseDouble(newPriceText);
-                selectedProduct.setName(newName);
-                selectedProduct.setPrice(newPrice);
 
-                saveData();
+                try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                     PreparedStatement statement = connection.prepareStatement("UPDATE termekek SET name = ?, price = ? WHERE name = ?")) {
+
+                    statement.setString(1, newName);
+                    statement.setDouble(2, newPrice);
+                    statement.setString(3, selectedProduct.getName());
+                    statement.executeUpdate();
+
+                    selectedProduct.setName(newName);
+                    selectedProduct.setPrice(newPrice);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
                 clearInputFields();
             }
         }
     }
+
 
     @FXML
     private void handleDelete() {
@@ -87,11 +102,21 @@ public class NyilvantartoController {
             Optional<ButtonType> result = confirmation.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 products.remove(selectedProduct);
-                saveData();
+
+                try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                     PreparedStatement statement = connection.prepareStatement("DELETE FROM termekek WHERE name = ?")) {
+
+                    statement.setString(1, selectedProduct.getName());
+                    statement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
                 clearInputFields();
             }
         }
     }
+
 
     @FXML
     private void handleEmergencyDelete() {
@@ -108,37 +133,38 @@ public class NyilvantartoController {
     }
 
     private void saveData() {
-        Properties properties = new Properties();
-        int index = 0;
-        for (Product product : products) {
-            properties.setProperty("product" + index + ".name", product.getName());
-            properties.setProperty("product" + index + ".price", String.valueOf(product.getPrice()));
-            index++;
-        }
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             Statement deleteStatement = connection.createStatement();
+             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO termekek (name, price) VALUES (?, ?)")) {
 
-        try (OutputStream output = new FileOutputStream(PROPERTIES_FILE)) {
-            properties.store(output, null);
-        } catch (IOException e) {
+            deleteStatement.executeUpdate("DELETE FROM termekek");
+
+            for (Product product : products) {
+                insertStatement.setString(1, product.getName());
+                insertStatement.setDouble(2, product.getPrice());
+                insertStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     private void loadData() {
-        Properties properties = new Properties();
-        try (InputStream input = new FileInputStream(PROPERTIES_FILE)) {
-            if (input != null) {
-                properties.load(input);
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM termekek")) {
 
-                for (int index = 0; properties.containsKey("product" + index + ".name"); index++) {
-                    String name = properties.getProperty("product" + index + ".name");
-                    double price = Double.parseDouble(properties.getProperty("product" + index + ".price"));
-                    products.add(new Product(name, price));
-                }
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                double price = resultSet.getDouble("price");
+                products.add(new Product(name, price));
             }
-        } catch (IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     private void clearInputFields() {
         productNameField.clear();

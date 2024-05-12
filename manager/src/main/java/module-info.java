@@ -7,6 +7,7 @@ module com.manager.manager {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires java.sql;
 
     opens com.manager.manager to javafx.fxml;
     exports com.manager.manager;
