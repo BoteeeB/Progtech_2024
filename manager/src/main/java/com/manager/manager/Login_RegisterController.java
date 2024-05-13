@@ -42,6 +42,9 @@ public class Login_RegisterController {
 
                 if (resultSet.next()) {
                     // A felhasználó sikeresen bejelentkezett
+                    int loggedInUserId = resultSet.getInt("id");
+                    UserSession.setLoggedInUserId(loggedInUserId);
+
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Bejelentkezés");
                     alert.setHeaderText(null);
@@ -50,7 +53,7 @@ public class Login_RegisterController {
 
                     // Check user_type and load the appropriate FXML file
                     int userType = resultSet.getInt("user_type");
-                    String fxmlFile = userType == 1 ? "Nyilvantarto.fxml" : "Other.fxml"; // Replace "Other.fxml" with your other FXML file
+                    String fxmlFile = userType == 1 ? "Nyilvantarto.fxml" : "Vasarlo.fxml"; // Replace "Other.fxml" with your other FXML file
 
                     FXMLLoader mainLoader = new FXMLLoader(getClass().getResource(fxmlFile));
                     Scene mainScene = new Scene(mainLoader.load());
@@ -65,9 +68,12 @@ public class Login_RegisterController {
                     alert.setContentText("Hibás felhasználónév vagy jelszó!");
                     alert.showAndWait();
                 }
+
             } catch (SQLException | IOException e) {
                 e.printStackTrace();
             }
+
+
         }
     }
 
