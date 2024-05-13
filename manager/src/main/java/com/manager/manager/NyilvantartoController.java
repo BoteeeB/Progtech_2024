@@ -25,6 +25,9 @@ public class NyilvantartoController {
     @FXML
     private TextField priceField;
 
+    @FXML
+    private TextField quantityField; // New field
+
     private ObservableList<Product> products;
 
     public NyilvantartoController() {
@@ -38,6 +41,7 @@ public class NyilvantartoController {
             if (newValue != null) {
                 productNameField.setText(newValue.getName());
                 priceField.setText(String.valueOf(newValue.getPrice()));
+                quantityField.setText(String.valueOf(newValue.getQuantity())); // New field
             }
         });
 
@@ -48,10 +52,12 @@ public class NyilvantartoController {
     private void handleAdd() {
         String name = productNameField.getText().trim();
         String priceText = priceField.getText().trim();
+        String quantityText = quantityField.getText().trim(); // New field
 
-        if (!name.isEmpty() && !priceText.isEmpty()) {
-            double price = Double.parseDouble(priceText);
-            Product newProduct = new Product(name, price);
+        if (!name.isEmpty() && !priceText.isEmpty() && !quantityText.isEmpty()) {
+            int price = Integer.parseInt(priceText);
+            int quantity = Integer.parseInt(quantityText); // New field
+            Product newProduct = new Product(name, price, quantity); // New field
             products.add(newProduct);
 
             saveData();
@@ -66,20 +72,24 @@ public class NyilvantartoController {
         if (selectedProduct != null) {
             String newName = productNameField.getText().trim();
             String newPriceText = priceField.getText().trim();
+            String newQuantityText = quantityField.getText().trim(); // New field
 
-            if (!newName.isEmpty() && !newPriceText.isEmpty()) {
-                double newPrice = Double.parseDouble(newPriceText);
+            if (!newName.isEmpty() && !newPriceText.isEmpty() && !newQuantityText.isEmpty()) {
+                int newPrice = Integer.parseInt(newPriceText);
+                int newQuantity = Integer.parseInt(newQuantityText); // New field
 
                 try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                     PreparedStatement statement = connection.prepareStatement("UPDATE termekek SET name = ?, price = ? WHERE name = ?")) {
+                     PreparedStatement statement = connection.prepareStatement("UPDATE termekek SET name = ?, price = ?, quantity = ? WHERE name = ?")) {
 
                     statement.setString(1, newName);
                     statement.setDouble(2, newPrice);
-                    statement.setString(3, selectedProduct.getName());
+                    statement.setInt(3, newQuantity); // New field
+                    statement.setString(4, selectedProduct.getName());
                     statement.executeUpdate();
 
                     selectedProduct.setName(newName);
                     selectedProduct.setPrice(newPrice);
+                    selectedProduct.setQuantity(newQuantity); // New field
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -88,6 +98,7 @@ public class NyilvantartoController {
             }
         }
     }
+
 
 
     @FXML
@@ -135,13 +146,14 @@ public class NyilvantartoController {
     private void saveData() {
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement deleteStatement = connection.createStatement();
-             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO termekek (name, price) VALUES (?, ?)")) {
+             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO termekek (name, price, quantity) VALUES (?, ?, ?)")) {
 
             deleteStatement.executeUpdate("DELETE FROM termekek");
 
             for (Product product : products) {
                 insertStatement.setString(1, product.getName());
                 insertStatement.setDouble(2, product.getPrice());
+                insertStatement.setInt(3, product.getQuantity()); // New field
                 insertStatement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -157,8 +169,9 @@ public class NyilvantartoController {
 
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
-                double price = resultSet.getDouble("price");
-                products.add(new Product(name, price));
+                int price = resultSet.getInt("price");
+                int quantity = resultSet.getInt("quantity"); // New field
+                products.add(new Product(name, price, quantity)); // New field
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -169,6 +182,7 @@ public class NyilvantartoController {
     private void clearInputFields() {
         productNameField.clear();
         priceField.clear();
+        quantityField.clear(); // New field
         productList.getSelectionModel().clearSelection();
     }
 }

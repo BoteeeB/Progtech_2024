@@ -48,8 +48,11 @@ public class Login_RegisterController {
                     alert.setContentText("Sikeres bejelentkezés!");
                     alert.showAndWait();
 
-                    // Átirányítás a fő alkalmazás felületére
-                    FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("Nyilvantarto.fxml"));
+                    // Check user_type and load the appropriate FXML file
+                    int userType = resultSet.getInt("user_type");
+                    String fxmlFile = userType == 1 ? "Nyilvantarto.fxml" : "Other.fxml"; // Replace "Other.fxml" with your other FXML file
+
+                    FXMLLoader mainLoader = new FXMLLoader(getClass().getResource(fxmlFile));
                     Scene mainScene = new Scene(mainLoader.load());
                     Stage stage = (Stage) usernameField.getScene().getWindow();
                     stage.setScene(mainScene);
@@ -68,6 +71,7 @@ public class Login_RegisterController {
         }
     }
 
+
     @FXML
     private void handleRegister() {
         String username = usernameField.getText().trim();
@@ -75,10 +79,12 @@ public class Login_RegisterController {
 
         if (!username.isEmpty() && !password.isEmpty()) {
             try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                 PreparedStatement statement = connection.prepareStatement("INSERT INTO felhasznalok (username, password) VALUES (?, ?)")) {
+                 PreparedStatement statement = connection.prepareStatement("INSERT INTO felhasznalok (username, password, user_type, money) VALUES (?, ?, ?, ?)")) {
 
                 statement.setString(1, username);
                 statement.setString(2, password);
+                statement.setInt(3, 0); // user_type is 0 for a simple user
+                statement.setInt(4, 20000); // money is 20000 for every new user
                 statement.executeUpdate();
 
                 // A felhasználó sikeresen regisztrált
@@ -92,5 +98,7 @@ public class Login_RegisterController {
             }
         }
     }
+
+
 
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Máj 12. 21:32
--- Kiszolgáló verziója: 10.4.24-MariaDB
--- PHP verzió: 8.1.6
+-- Gép: localhost
+-- Létrehozás ideje: 2024. Máj 13. 11:23
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,16 +30,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `felhasznalok` (
   `id` int(11) NOT NULL,
   `username` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `password` varchar(200) NOT NULL,
+  `user_type` int(11) NOT NULL,
+  `money` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `felhasznalok`
 --
 
-INSERT INTO `felhasznalok` (`id`, `username`, `password`) VALUES
-(1, 'Botond', 'asdasd1'),
-(2, 'Laca', 'asdasd5');
+INSERT INTO `felhasznalok` (`id`, `username`, `password`, `user_type`, `money`) VALUES
+(1, 'Botond', 'asdasd1', 1, 0),
+(2, 'Laca', 'asdasd5', 0, 0),
+(3, 'László', 'asdasd2', 0, 0),
+(4, 'User', 'user1', 0, 0),
+(5, 'moneyTest', 'test1', 0, 20000);
 
 -- --------------------------------------------------------
 
@@ -50,8 +55,9 @@ INSERT INTO `felhasznalok` (`id`, `username`, `password`) VALUES
 CREATE TABLE `termekek` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `price` int(11) NOT NULL,
+  `quantity` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexek a kiírt táblákhoz
@@ -77,13 +83,13 @@ ALTER TABLE `termekek`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `termekek`
 --
 ALTER TABLE `termekek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -18,6 +18,8 @@
     <TextField fx:id="productNameField" />
     <Label text="Price:" textFill="WHITE" />
     <TextField fx:id="priceField" />
+    <Label text="Quantity:" textFill="WHITE" />
+    <TextField fx:id="quantityField" />
     <Button onAction="#handleAdd" text="Add" />
     <Button onAction="#handleUpdate" text="Update" />
     <Button onAction="#handleDelete" text="Delete" />

@@ -7,11 +7,14 @@ public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-    private double price;
+    private int price;
 
-    public Product(String name, double price) {
+    private int quantity;
+
+    public Product(String name, int price, int quantity) {
         this.name = name;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public String getName() {
@@ -26,12 +29,20 @@ public class Product implements Serializable {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return name + " - $" + price;
+        return name + " - " + price+ " Ft" + " - " + quantity + " db";
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
