@@ -9,6 +9,8 @@ module com.manager.manager {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
+
+    exports com.manager.manager to javafx.graphics;
     opens com.manager.manager to javafx.fxml;
-    exports com.manager.manager;
+    exports com.manager.manager.abstraction to javafx.fxml;
 }
