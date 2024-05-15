@@ -1,4 +1,4 @@
-package com.manager.manager;
+package com.manager.manager.user;
 
 import java.io.Serializable;
 

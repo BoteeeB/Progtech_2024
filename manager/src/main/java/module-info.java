@@ -13,4 +13,10 @@ module com.manager.manager {
     exports com.manager.manager to javafx.graphics;
     opens com.manager.manager to javafx.fxml;
     exports com.manager.manager.abstraction to javafx.fxml;
+    exports com.manager.manager.controller to javafx.graphics;
+    opens com.manager.manager.controller to javafx.fxml;
+    exports com.manager.manager.Products to javafx.graphics;
+    opens com.manager.manager.Products to javafx.fxml;
+    exports com.manager.manager.user to javafx.graphics;
+    opens com.manager.manager.user to javafx.fxml;
 }

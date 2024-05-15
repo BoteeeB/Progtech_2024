@@ -1,16 +1,15 @@
-package com.manager.manager;
+package com.manager.manager.controller;
 
+import com.manager.manager.Products.Product;
+import com.manager.manager.abstraction.databaseConnection;
+import com.manager.manager.user.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.sql.*;
 
-public class VasarloController {
-
-    private static final String URL = "jdbc:mysql://localhost:3306/nyilvantartas";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+public class VasarloController extends databaseConnection {
 
     @FXML
     private ListView<Product> productList;

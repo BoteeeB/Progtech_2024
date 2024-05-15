@@ -1,18 +1,14 @@
-package com.manager.manager;
+package com.manager.manager.controller;
 
-import com.manager.manager.Interfaces.ProductFactory;
+import com.manager.manager.Products.Product;
 import com.manager.manager.abstraction.databaseConnection;
-import com.manager.manager.dbcommands.*;
+import com.manager.manager.admincommands.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import java.io.*;
-import java.sql.*;
-import java.util.Optional;
-import java.util.Properties;
 
-public class NyilvantartoController extends databaseConnection  {
+public class NyilvantartoController {
 
     @FXML
     private TextField productNameField;

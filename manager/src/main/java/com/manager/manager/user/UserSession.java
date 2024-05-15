@@ -1,4 +1,4 @@
-package com.manager.manager;
+package com.manager.manager.user;
 
 public class UserSession {
     private static int loggedInUserId;

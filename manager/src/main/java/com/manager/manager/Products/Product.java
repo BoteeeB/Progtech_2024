@@ -1,4 +1,4 @@
-package com.manager.manager;
+package com.manager.manager.Products;
 
 import java.io.Serializable;
 

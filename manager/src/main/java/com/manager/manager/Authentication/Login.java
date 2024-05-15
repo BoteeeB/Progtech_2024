@@ -1,7 +1,7 @@
 package com.manager.manager.Authentication;
 
 import com.manager.manager.Interfaces.Authentication;
-import com.manager.manager.UserSession;
+import com.manager.manager.user.UserSession;
 import com.manager.manager.abstraction.databaseConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

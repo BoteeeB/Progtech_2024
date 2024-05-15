@@ -1,7 +1,7 @@
-package com.manager.manager.dbcommands;
+package com.manager.manager.admincommands;
 
 import com.manager.manager.Interfaces.ProductFactory;
-import com.manager.manager.Product;
+import com.manager.manager.Products.Product;
 import com.manager.manager.abstraction.databaseConnection;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;

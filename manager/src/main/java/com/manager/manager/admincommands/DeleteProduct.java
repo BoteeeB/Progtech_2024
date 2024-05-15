@@ -1,9 +1,11 @@
-package com.manager.manager.dbcommands;
+package com.manager.manager.admincommands;
 
 import com.manager.manager.Interfaces.ProductFactory;
-import com.manager.manager.Product;
+import com.manager.manager.Products.Product;
 import com.manager.manager.abstraction.databaseConnection;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -11,8 +13,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Optional;
 
-public class UpdateProduct extends databaseConnection implements ProductFactory {
+public class DeleteProduct extends databaseConnection implements ProductFactory {
+
     private TextField productNameField;
     private TextField priceField;
     private TextField quantityField;
@@ -22,7 +26,7 @@ public class UpdateProduct extends databaseConnection implements ProductFactory 
     private SaveData newSaveData;
     private ClearInputFields newClear;
 
-    public UpdateProduct(TextField productNameField, TextField priceField, TextField quantityField, ListView<Product> productList, ObservableList<Product> products){
+    public DeleteProduct(TextField productNameField, TextField priceField, TextField quantityField, ListView<Product> productList, ObservableList<Product> products){
         this.productNameField = productNameField;
         this.priceField = priceField;
         this.quantityField = quantityField;
@@ -36,26 +40,20 @@ public class UpdateProduct extends databaseConnection implements ProductFactory 
     public void execute() {
         Product selectedProduct = productList.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
-            String newName = productNameField.getText().trim();
-            String newPriceText = priceField.getText().trim();
-            String newQuantityText = quantityField.getText().trim(); // New field
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmation.setTitle("Confirmation");
+            confirmation.setHeaderText("Are you sure?");
+            confirmation.setContentText("This will delete the selected item. Do you want to proceed?");
 
-            if (!newName.isEmpty() && !newPriceText.isEmpty() && !newQuantityText.isEmpty()) {
-                int newPrice = Integer.parseInt(newPriceText);
-                int newQuantity = Integer.parseInt(newQuantityText); // New field
+            Optional<ButtonType> result = confirmation.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                products.remove(selectedProduct);
 
                 try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                     PreparedStatement statement = connection.prepareStatement("UPDATE termekek SET name = ?, price = ?, quantity = ? WHERE name = ?")) {
+                     PreparedStatement statement = connection.prepareStatement("DELETE FROM termekek WHERE name = ?")) {
 
-                    statement.setString(1, newName);
-                    statement.setDouble(2, newPrice);
-                    statement.setInt(3, newQuantity); // New field
-                    statement.setString(4, selectedProduct.getName());
+                    statement.setString(1, selectedProduct.getName());
                     statement.executeUpdate();
-
-                    selectedProduct.setName(newName);
-                    selectedProduct.setPrice(newPrice);
-                    selectedProduct.setQuantity(newQuantity); // New field
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

@@ -1,4 +1,4 @@
-package com.manager.manager;
+package com.manager.manager.controller;
 
 import com.manager.manager.Authentication.Login;
 import com.manager.manager.Authentication.Register;
@@ -18,7 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Login_RegisterController extends databaseConnection {
+public class Login_RegisterController{
 
     @FXML
     private TextField usernameField;
