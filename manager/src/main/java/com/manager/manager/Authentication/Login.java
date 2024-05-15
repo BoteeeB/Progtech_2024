@@ -54,7 +54,7 @@ public class Login extends databaseConnection implements Authentication {
                     int userType = resultSet.getInt("user_type");
                     String fxmlFile = userType == 1 ? "Nyilvantarto.fxml" : "Vasarlo.fxml"; // Replace "Other.fxml" with your other FXML file
 
-                    FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("../" + fxmlFile));
+                    FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/com/manager/manager/" + fxmlFile));
                     Scene mainScene = new Scene(mainLoader.load());
                     Stage stage = (Stage) usernameField.getScene().getWindow();
                     stage.setScene(mainScene);
