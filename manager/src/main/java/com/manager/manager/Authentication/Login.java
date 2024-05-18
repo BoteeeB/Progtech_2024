@@ -25,6 +25,10 @@ public class Login extends databaseConnection implements Authentication {
         this.passwordField = PasswordField;
     }
 
+    @Override
+    public String getUsername() {
+        return usernameField.getText().trim();
+    }
 
     @Override
     public void execute() {
@@ -52,7 +56,8 @@ public class Login extends databaseConnection implements Authentication {
 
                     // Check user_type and load the appropriate FXML file
                     int userType = resultSet.getInt("user_type");
-                    String fxmlFile = userType == 1 ? "Nyilvantarto.fxml" : "Vasarlo.fxml"; // Replace "Other.fxml" with your other FXML file
+                    UserSession.setUserType(userType); // Store the user type in the session
+                    String fxmlFile = userType == 1 ? "Nyilvantarto.fxml" : "Vasarlo.fxml";
 
                     FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/com/manager/manager/" + fxmlFile));
                     Scene mainScene = new Scene(mainLoader.load());
@@ -71,8 +76,6 @@ public class Login extends databaseConnection implements Authentication {
             } catch (SQLException | IOException e) {
                 e.printStackTrace();
             }
-
-
         }
     }
 }

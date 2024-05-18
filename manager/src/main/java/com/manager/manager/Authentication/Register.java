@@ -5,7 +5,6 @@ import com.manager.manager.abstraction.databaseConnection;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import org.w3c.dom.Text;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,8 +22,13 @@ public class Register extends databaseConnection implements Authentication {
     }
 
     @Override
+    public String getUsername() {
+        return usernameField.getText().trim();
+    }
+
+    @Override
     public void execute() {
-        String username = usernameField.getText().trim();
+        String username = getUsername();
         String password = passwordField.getText().trim();
 
         if (!username.isEmpty() && !password.isEmpty()) {
