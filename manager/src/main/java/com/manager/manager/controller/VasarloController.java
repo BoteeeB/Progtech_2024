@@ -2,6 +2,7 @@ package com.manager.manager.controller;
 
 import com.manager.manager.Products.Product;
 import com.manager.manager.abstraction.databaseConnection;
+import com.manager.manager.customercommands.*;
 import com.manager.manager.user.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,26 +42,8 @@ public class VasarloController extends databaseConnection {
 
     @FXML
     private void handleAddToCart() {
-        Product selectedProduct = productList.getSelectionModel().getSelectedItem();
-        if (selectedProduct != null) {
-            try {
-                int quantity = Integer.parseInt(quantityField.getText());
-                if (quantity > 0 && quantity <= selectedProduct.getQuantity()) {
-                    for (int i = 0; i < quantity; i++) {
-                        cart.add(selectedProduct);
-                    }
-                    updateTotalPrice();
-                    // Frissítjük a termék mennyiségét az adatbázisban
-                    updateProductQuantity(selectedProduct, quantity);
-                } else {
-                    showAlert("Invalid quantity selected!");
-                }
-            } catch (NumberFormatException e) {
-                showAlert("Please enter a valid quantity!");
-            }
-        } else {
-            showAlert("Please select a product!");
-        }
+        AddToCart newCart = new AddToCart(products,productList,quantityField,cart,totalPriceLabel,userBalanceLabel);
+        newCart.execute();
     }
 
     @FXML
@@ -83,34 +66,14 @@ public class VasarloController extends databaseConnection {
     }
 
     private int getUserMoney() {
-        int loggedInUserId = UserSession.getLoggedInUserId();
-        int money = 0;
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             PreparedStatement statement = connection.prepareStatement("SELECT money FROM felhasznalok WHERE id = ?")) {
-            statement.setInt(1, loggedInUserId);
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                money = resultSet.getInt("money");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return money;
+        GetUserMoney newmoney = new GetUserMoney();
+        return newmoney.returnExecute();
     }
 
 
     private void updateUserMoney(int newBalance) {
-        int loggedInUserId = UserSession.getLoggedInUserId();
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             PreparedStatement statement = connection.prepareStatement("UPDATE felhasznalok SET money = ? WHERE id = ?")) {
-            statement.setInt(1, newBalance);
-            statement.setInt(2, loggedInUserId);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        UpdateUserMoney newMoney = new UpdateUserMoney(newBalance);
+        newMoney.execute();
     }
 
     private void updateUserBalance() {
@@ -121,48 +84,26 @@ public class VasarloController extends databaseConnection {
 
 
     private void updateProductQuantity(Product product, int quantityChange) {
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             PreparedStatement statement = connection.prepareStatement("UPDATE termekek SET quantity = quantity - ? WHERE name = ?")) {
-            statement.setInt(1, Math.abs(quantityChange)); // Negatív érték a levonáshoz
-            statement.setString(2, product.getName());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        UpdateProductAmount newProductQuantity = new UpdateProductAmount(product, quantityChange);
+        newProductQuantity.execute();
     }
 
 
 
     private void loadData() {
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM termekek");
-             ResultSet resultSet = statement.executeQuery()) {
-
-            while (resultSet.next()) {
-                String name = resultSet.getString("name");
-                int price = resultSet.getInt("price");
-                int quantity = resultSet.getInt("quantity");
-                products.add(new Product(name, price, quantity));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        LoadProducts newProducts = new LoadProducts(products);
+        newProducts.execute();
     }
 
 
     private void updateTotalPrice() {
-        int totalPrice = cart.stream().mapToInt(Product::getPrice).sum();
-        totalPriceLabel.setText("Végösszeg: " + totalPrice + " Ft");
-        int userMoney = getUserMoney();
-        userBalanceLabel.setText("Egyenleg: " + userMoney + " Ft");
+        UpdateTotalPrice newTotal = new UpdateTotalPrice(cart,totalPriceLabel,userBalanceLabel);
+        newTotal.execute();
     }
 
 
     private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        ShowAlert newAlert = new ShowAlert(message);
+        newAlert.execute();
     }
 }
