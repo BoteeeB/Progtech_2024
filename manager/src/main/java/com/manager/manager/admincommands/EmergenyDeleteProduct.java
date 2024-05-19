@@ -8,10 +8,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Optional;
 
 public class EmergenyDeleteProduct extends databaseConnection implements ProductFactory {
+
+    private static final Logger logger = LogManager.getLogger(EmergenyDeleteProduct.class);
 
     private TextField productNameField;
     private TextField priceField;
@@ -44,6 +48,8 @@ public class EmergenyDeleteProduct extends databaseConnection implements Product
         if (result.isPresent() && result.get() == ButtonType.OK) {
             products.clear();
             newClear.clearInputFields();
+
+            logger.info("Összes termék törölve");
         }
     }
 }

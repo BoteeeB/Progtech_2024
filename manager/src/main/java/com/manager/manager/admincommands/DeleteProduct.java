@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +18,8 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 public class DeleteProduct extends databaseConnection implements ProductFactory {
+
+    private static final Logger logger = LogManager.getLogger(DeleteProduct.class);
 
     private TextField productNameField;
     private TextField priceField;
@@ -36,6 +40,7 @@ public class DeleteProduct extends databaseConnection implements ProductFactory 
         this.newSaveData = new SaveData(productNameField, priceField, quantityField, productList, products);
         this.newClear = new ClearInputFields(productNameField, priceField, quantityField, productList);
     }
+
     @Override
     public void execute() {
         Product selectedProduct = productList.getSelectionModel().getSelectedItem();
@@ -47,17 +52,20 @@ public class DeleteProduct extends databaseConnection implements ProductFactory 
 
             Optional<ButtonType> result = confirmation.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                products.remove(selectedProduct);
+                try {
+                    products.remove(selectedProduct);
 
-                try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                     PreparedStatement statement = connection.prepareStatement("DELETE FROM termekek WHERE name = ?")) {
+                    try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                         PreparedStatement statement = connection.prepareStatement("DELETE FROM termekek WHERE name = ?")) {
 
-                    statement.setString(1, selectedProduct.getName());
-                    statement.executeUpdate();
+                        statement.setString(1, selectedProduct.getName());
+                        statement.executeUpdate();
+
+                        logger.info("Termék törölve: " + selectedProduct.getName());
+                    }
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    logger.error("Hiba történt a termék törlése során: " + e.getMessage());
                 }
-
                 newClear.clearInputFields();
             }
         }
