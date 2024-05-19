@@ -12,6 +12,7 @@ import java.sql.SQLException;
 public class UpdateProductAmount extends databaseConnection implements CustomerFactory {
     private Product product;
     private int quantityChange;
+
     public UpdateProductAmount(Product product, int quantityChange){
         this.product = product;
         this.quantityChange = quantityChange;

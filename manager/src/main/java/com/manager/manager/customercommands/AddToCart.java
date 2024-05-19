@@ -10,28 +10,24 @@ import javafx.scene.control.TextField;
 
 public class AddToCart extends databaseConnection implements CustomerFactory {
 
-    private Product product;
-    private int quantityChange;
-    private ListView<Product> productList;
     private ObservableList<Product> products;
+    private ListView<Product> productList;
     private TextField quantityField;
     private ObservableList<Product> cart;
     private Label totalPriceLabel;
     private Label userBalanceLabel;
     private String message;
     private UpdateTotalPrice updateTotalPrice;
-    private UpdateProductAmount updateProductQuantity;
     private ShowAlert showAlert;
 
-    public AddToCart(ObservableList<Product> products,ListView<Product> productList, TextField quantityField, ObservableList<Product> cart, Label totalPriceLabel,Label userBalanceLabel){
+    public AddToCart(ObservableList<Product> products, ListView<Product> productList, TextField quantityField, ObservableList<Product> cart, Label totalPriceLabel, Label userBalanceLabel){
         this.products = products;
         this.productList = productList;
         this.quantityField = quantityField;
         this.cart = cart;
         this.totalPriceLabel = totalPriceLabel;
         this.userBalanceLabel = userBalanceLabel;
-        this.updateTotalPrice = new UpdateTotalPrice(cart,totalPriceLabel,userBalanceLabel);
-        this.updateProductQuantity = new UpdateProductAmount(product,quantityChange);
+        this.updateTotalPrice = new UpdateTotalPrice(cart, totalPriceLabel, userBalanceLabel);
         this.showAlert = new ShowAlert(message);
     }
 
@@ -46,15 +42,20 @@ public class AddToCart extends databaseConnection implements CustomerFactory {
                         cart.add(selectedProduct);
                     }
                     updateTotalPrice.execute();
+
                     // Frissítjük a termék mennyiségét az adatbázisban
+                    UpdateProductAmount updateProductQuantity = new UpdateProductAmount(selectedProduct, quantity);
                     updateProductQuantity.execute();
                 } else {
+                    showAlert.setMessage("Invalid quantity.");
                     showAlert.execute();
                 }
             } catch (NumberFormatException e) {
+                showAlert.setMessage("Please enter a valid number for quantity.");
                 showAlert.execute();
             }
         } else {
+            showAlert.setMessage("Please select a product.");
             showAlert.execute();
         }
     }
