@@ -13,12 +13,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class Login extends databaseConnection implements Authentication {
     @FXML
     private TextField usernameField;
     @FXML
     private PasswordField passwordField;
+
+    private static final Logger logger = LogManager.getLogger(Login.class);
+
 
     public Login(TextField UsernameField, PasswordField PasswordField){
         this.usernameField = UsernameField;
@@ -48,6 +54,8 @@ public class Login extends databaseConnection implements Authentication {
                     int loggedInUserId = resultSet.getInt("id");
                     UserSession.setLoggedInUserId(loggedInUserId);
 
+                    logger.info("Sikeres bejelentkezés: " + username);
+
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Bejelentkezés");
                     alert.setHeaderText(null);
@@ -66,6 +74,8 @@ public class Login extends databaseConnection implements Authentication {
                     stage.show();
                 } else {
                     // A bejelentkezési adatok nem helyesek
+                    logger.error("Hibás felhasználónév vagy jelszó: " + username);
+
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Hiba");
                     alert.setHeaderText(null);
@@ -74,8 +84,9 @@ public class Login extends databaseConnection implements Authentication {
                 }
 
             } catch (SQLException | IOException e) {
-                e.printStackTrace();
+                logger.error("Hiba történt a bejelentkezés során.", e);
             }
+
         }
     }
 }

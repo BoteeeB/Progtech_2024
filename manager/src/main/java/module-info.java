@@ -8,6 +8,7 @@ module com.manager.manager {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires org.apache.logging.log4j;
 
 
     exports com.manager.manager to javafx.graphics;
