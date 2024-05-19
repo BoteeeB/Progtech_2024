@@ -2,23 +2,15 @@ package com.manager.manager.controller;
 
 import com.manager.manager.Authentication.Login;
 import com.manager.manager.Authentication.Register;
-import com.manager.manager.abstraction.databaseConnection;
+import com.manager.manager.decorators.AuthorizationDecorator;
+import com.manager.manager.decorators.LoggingDecorator;
+import com.manager.manager.decorators.RegistrationDecorator;
+import com.manager.manager.Interfaces.Authentication;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class Login_RegisterController{
+public class Login_RegisterController {
 
     @FXML
     private TextField usernameField;
@@ -28,14 +20,25 @@ public class Login_RegisterController{
 
     @FXML
     private void handleLogin() {
-        Login newLogin = new Login(usernameField, passwordField);
-        newLogin.execute();
-    }
+        Authentication login = new Login(usernameField, passwordField);
 
+        // Dekorátorok alkalmazása
+        login = new LoggingDecorator(login);
+        login = new AuthorizationDecorator(login, false); // A bejelentkezéshez nem szükséges admin jogosultság
+
+        // Művelet végrehajtása
+        login.execute();
+    }
 
     @FXML
     private void handleRegister() {
-        Register newRegister = new Register(usernameField,passwordField);
-        newRegister.execute();
+        Authentication register = new Register(usernameField, passwordField);
+
+        // Dekorátorok alkalmazása
+        register = new LoggingDecorator(register);
+        register = new RegistrationDecorator(register); // Jogosultság ellenőrzés regisztrációhoz
+
+        // Művelet végrehajtása
+        register.execute();
     }
 }
