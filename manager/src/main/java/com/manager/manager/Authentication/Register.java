@@ -5,6 +5,8 @@ import com.manager.manager.abstraction.databaseConnection;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Register extends databaseConnection implements Authentication {
+
+    private static final Logger logger = LogManager.getLogger(Register.class);
 
     private TextField usernameField;
     private PasswordField passwordField;
@@ -37,18 +41,19 @@ public class Register extends databaseConnection implements Authentication {
 
                 statement.setString(1, username);
                 statement.setString(2, password);
-                statement.setInt(3, 0); // user_type is 0 for a simple user
-                statement.setInt(4, 20000); // money is 20000 for every new user
+                statement.setInt(3, 0);
+                statement.setInt(4, 20000);
                 statement.executeUpdate();
 
-                // A felhasználó sikeresen regisztrált
+                logger.info("Sikeres regisztráció: " + username);
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Regisztráció");
                 alert.setHeaderText(null);
                 alert.setContentText("Sikeres regisztráció!");
                 alert.showAndWait();
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error("Hiba történt a regisztráció során.", e);
             }
         }
     }

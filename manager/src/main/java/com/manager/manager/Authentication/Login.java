@@ -50,7 +50,6 @@ public class Login extends databaseConnection implements Authentication {
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
-                    // A felhasználó sikeresen bejelentkezett
                     int loggedInUserId = resultSet.getInt("id");
                     UserSession.setLoggedInUserId(loggedInUserId);
 
@@ -62,9 +61,8 @@ public class Login extends databaseConnection implements Authentication {
                     alert.setContentText("Sikeres bejelentkezés!");
                     alert.showAndWait();
 
-                    // Check user_type and load the appropriate FXML file
                     int userType = resultSet.getInt("user_type");
-                    UserSession.setUserType(userType); // Store the user type in the session
+                    UserSession.setUserType(userType);
                     String fxmlFile = userType == 1 ? "Nyilvantarto.fxml" : "Vasarlo.fxml";
 
                     FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/com/manager/manager/" + fxmlFile));
@@ -73,7 +71,6 @@ public class Login extends databaseConnection implements Authentication {
                     stage.setScene(mainScene);
                     stage.show();
                 } else {
-                    // A bejelentkezési adatok nem helyesek
                     logger.error("Hibás felhasználónév vagy jelszó: " + username);
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);

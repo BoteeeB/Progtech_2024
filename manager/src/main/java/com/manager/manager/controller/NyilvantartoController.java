@@ -32,7 +32,7 @@ public class NyilvantartoController {
             if (newValue != null) {
                 productNameField.setText(newValue.getName());
                 priceField.setText(String.valueOf(newValue.getPrice()));
-                quantityField.setText(String.valueOf(newValue.getQuantity())); // New field
+                quantityField.setText(String.valueOf(newValue.getQuantity()));
             }
         });
 
@@ -79,7 +79,7 @@ public class NyilvantartoController {
     private void clearInputFields() {
         productNameField.clear();
         priceField.clear();
-        quantityField.clear(); // New field
+        quantityField.clear();
         productList.getSelectionModel().clearSelection();
     }
 }
