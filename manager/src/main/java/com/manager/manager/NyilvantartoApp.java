@@ -21,12 +21,6 @@ public class NyilvantartoApp extends Application {
         loginStage.showAndWait();  // Megjelenítjük az ablakot és várunk, amíg a felhasználó be nem zárja
 
         // Miután a felhasználó bejelentkezett/regisztrált, betöltjük a fő alkalmazás felületét
-
-        FXMLLoader mainLoader = new FXMLLoader(NyilvantartoApp.class.getResource("Nyilvantarto.fxml"));
-        Scene mainScene = new Scene(mainLoader.load(), 1000, 500);
-        primaryStage.setTitle("Nyilvántartó rendszer");
-        primaryStage.setScene(mainScene);
-        primaryStage.show();
     }
 
     public static void main(String[] args) {
