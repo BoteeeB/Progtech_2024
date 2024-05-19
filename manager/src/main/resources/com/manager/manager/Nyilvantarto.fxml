@@ -4,25 +4,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox style="-fx-background-color: #4683B7;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manager.manager.controller.NyilvantartoController">
-
+<VBox style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manager.manager.controller.NyilvantartoController">
 
   <padding>
     <Insets bottom="20" left="20" right="20" top="20" />
   </padding>
 
-  <ListView fx:id="productList" style="-fx-background-color: #daf0ff;" VBox.vgrow="ALWAYS" />
+  <ListView fx:id="productList" style="-fx-background-color: #DAF0FF;" VBox.vgrow="ALWAYS" />
 
-  <HBox spacing="10" style="-fx-background-color: #4683B7;">
-    <Label text="Product Name:" textFill="WHITE" />
-    <TextField fx:id="productNameField" />
-    <Label text="Price:" textFill="WHITE" />
-    <TextField fx:id="priceField" />
-    <Label text="Quantity:" textFill="WHITE" />
-    <TextField fx:id="quantityField" />
-    <Button onAction="#handleAdd" text="Add" />
-    <Button onAction="#handleUpdate" text="Update" />
-    <Button onAction="#handleDelete" text="Delete" />
-    <Button onAction="#handleEmergencyDelete" style="-fx-background-color: red;" text="Emergency Delete" textFill="WHITE" />
+  <HBox spacing="10" style="-fx-background-color: #1E1E1E;">
+    <Label text="Product Name:" textFill="WHITE" style="-fx-font-size: 14px;" />
+    <TextField fx:id="productNameField" style="-fx-background-color: #2C2C2C; -fx-text-fill: white; -fx-font-size: 14px;" />
+    <Label text="Price:" textFill="WHITE" style="-fx-font-size: 14px;" />
+    <TextField fx:id="priceField" style="-fx-background-color: #2C2C2C; -fx-text-fill: white; -fx-font-size: 14px;" />
+    <Label text="Quantity:" textFill="WHITE" style="-fx-font-size: 14px;" />
+    <TextField fx:id="quantityField" style="-fx-background-color: #2C2C2C; -fx-text-fill: white; -fx-font-size: 14px;" />
+    <Button onAction="#handleAdd" text="Add" style="-fx-background-color: #4683B7; -fx-text-fill: white; -fx-font-size: 14px;" />
+    <Button onAction="#handleUpdate" text="Update" style="-fx-background-color: #4683B7; -fx-text-fill: white; -fx-font-size: 14px;" />
+    <Button onAction="#handleDelete" text="Delete" style="-fx-background-color: #4683B7; -fx-text-fill: white; -fx-font-size: 14px;" />
+    <Button onAction="#handleEmergencyDelete" style="-fx-background-color: red; -fx-font-size: 14px;" text="Emergency Delete" textFill="WHITE" />
   </HBox>
 </VBox>

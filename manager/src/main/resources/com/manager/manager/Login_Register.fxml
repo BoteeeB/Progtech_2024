@@ -5,44 +5,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox style="-fx-background-color: #4683B7;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manager.manager.controller.Login_RegisterController">
+<VBox style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manager.manager.controller.Login_RegisterController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <HBox spacing="10" style="-fx-background-color: #4683B7;">
+    <HBox spacing="10" style="-fx-background-color: #1E1E1E;">
         <Label text="Username:" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <TextField fx:id="usernameField" prefHeight="39.0" prefWidth="208.0">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
+        <TextField fx:id="usernameField" prefHeight="39.0" prefWidth="208.0" style="-fx-background-color: #2C2C2C; -fx-text-fill: white;">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
     </HBox>
 
-    <HBox spacing="10" style="-fx-background-color: #4683B7;">
+    <HBox spacing="10" style="-fx-background-color: #1E1E1E;">
         <Label text="Password:" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <PasswordField fx:id="passwordField" prefHeight="39.0" prefWidth="214.0">
-         <font>
-            <Font size="18.0" />
-         </font></PasswordField>
+        <PasswordField fx:id="passwordField" prefHeight="39.0" prefWidth="214.0" style="-fx-background-color: #2C2C2C; -fx-text-fill: white;">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </PasswordField>
     </HBox>
 
-    <HBox spacing="10" style="-fx-background-color: #4683B7;">
-        <Button onAction="#handleLogin" prefHeight="40" prefWidth="100" text="Login">
-         <font>
-            <Font size="18.0" />
-         </font></Button>
-        <Button onAction="#handleRegister" prefHeight="40" prefWidth="100" text="Register">
-         <font>
-            <Font size="18.0" />
-         </font></Button>
+    <HBox spacing="10" style="-fx-background-color: #1E1E1E;">
+        <Button onAction="#handleLogin" prefHeight="40" prefWidth="100" text="Login" style="-fx-background-color: #4683B7; -fx-text-fill: white; -fx-font-size: 18px;">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button onAction="#handleRegister" prefHeight="40" prefWidth="100" text="Register" style="-fx-background-color: #4683B7; -fx-text-fill: white; -fx-font-size: 18px;">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
     </HBox>
 </VBox>

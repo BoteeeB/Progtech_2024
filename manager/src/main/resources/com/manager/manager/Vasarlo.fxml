@@ -5,22 +5,47 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox style="-fx-background-color: #4683B7;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manager.manager.controller.VasarloController">
+<VBox style="-fx-background-color: #2C2C2C;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manager.manager.controller.VasarloController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <ListView fx:id="productList" style="-fx-background-color: #daf0ff;" VBox.vgrow="ALWAYS" />
+    <ListView fx:id="productList" style="-fx-background-color: #2C2C2C; -fx-text-fill: white; -fx-font-size: 14px;" VBox.vgrow="ALWAYS"/>
 
-    <HBox spacing="10" style="-fx-background-color: #4683B7;">
-        <Label text="Quantity:" textFill="WHITE" />
+    <HBox spacing="10" style="-fx-background-color: #2C2C2C;">
+        <Label text="Quantity:" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
         <TextField fx:id="quantityField" />
-        <Button onAction="#handleAddToCart" text="Add to Cart" />
-        <Button onAction="#handleCheckout" text="Checkout" />
+        <Button onAction="#handleAddToCart" text="Add to Cart" style="-fx-background-color: #4683B7; -fx-text-fill: white;">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button onAction="#handleCheckout" text="Checkout" style="-fx-background-color: #4683B7; -fx-text-fill: white;">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
     </HBox>
 
-    <Label fx:id="totalPriceLabel" textFill="WHITE" />
-    <Label fx:id="userBalanceLabel" textFill="WHITE" />
+    <HBox spacing="10" style="-fx-background-color: #2C2C2C;">
+        <Label fx:id="totalPriceLabel" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+    </HBox>
+
+    <HBox spacing="10" style="-fx-background-color: #2C2C2C;">
+        <Label fx:id="userBalanceLabel" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+    </HBox>
 
 </VBox>
