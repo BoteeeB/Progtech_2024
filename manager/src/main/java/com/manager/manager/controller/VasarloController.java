@@ -65,7 +65,7 @@ public class VasarloController extends databaseConnection {
             products.clear();
             loadData();
             updateTotalPrice();
-            showAlert("Total Price: $" + totalPrice);
+            showAlert("Total Price: " + totalPrice + " Ft");
             logger.info("Sikeres vásárlás. Összesen fizetendő: " + totalPrice + " Ft");
         } else {
             showAlert("Insufficient funds!");
