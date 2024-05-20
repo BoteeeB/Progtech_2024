@@ -10,6 +10,12 @@ import java.sql.*;
 
 public class LoadProducts extends databaseConnection implements CustomerFactory {
 
+    private Connection connection;
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
     private ObservableList<Product> products;
 
     public LoadProducts(ObservableList<Product> products){
@@ -18,9 +24,12 @@ public class LoadProducts extends databaseConnection implements CustomerFactory 
 
     @Override
     public void execute() {
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM termekek");
-             ResultSet resultSet = statement.executeQuery()) {
+        try {
+            if (this.connection == null) {
+                this.connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            }
+            PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM termekek");
+            ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
