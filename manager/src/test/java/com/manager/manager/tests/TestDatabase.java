@@ -1,13 +1,11 @@
 package com.manager.manager.tests;
-import com.manager.manager.abstraction.databaseCon;
-import com.manager.manager.controller.VasarloController;
-import com.manager.manager.Products.Product;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
-public class TestBotond {
+import com.manager.manager.abstraction.databaseCon;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TestDatabase {
 
     @Test
     public void testDatabaseConnection() {
@@ -17,4 +15,5 @@ public class TestBotond {
         assertEquals("root", connection.getUsername());
         assertEquals("", connection.getPassword());
     }
+
 }
