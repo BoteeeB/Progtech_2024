@@ -7,8 +7,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AddToCart extends databaseConnection implements CustomerFactory {
+
+    private static final Logger logger = LogManager.getLogger(AddToCart.class);
 
     private ObservableList<Product> products;
     private ListView<Product> productList;
@@ -43,20 +47,24 @@ public class AddToCart extends databaseConnection implements CustomerFactory {
                     }
                     updateTotalPrice.execute();
 
-                    // Frissítjük a termék mennyiségét az adatbázisban
                     UpdateProductAmount updateProductQuantity = new UpdateProductAmount(selectedProduct, quantity);
                     updateProductQuantity.execute();
+
+                    logger.info(quantity + " darab " + selectedProduct.getName() + " hozzáadva a kosárhoz.");
                 } else {
-                    showAlert.setMessage("Invalid quantity.");
+                    showAlert.setMessage("Érvénytelen mennyiség.");
                     showAlert.execute();
+                    logger.warn("Érvénytelen mennyiség megadva a következő termékhez: " + selectedProduct.getName());
                 }
             } catch (NumberFormatException e) {
-                showAlert.setMessage("Please enter a valid number for quantity.");
+                showAlert.setMessage("Kérem, adjon meg érvényes számot a mennyiséghez.");
                 showAlert.execute();
+                logger.error("Érvénytelen mennyiség formátum megadva a következő termékhez: " + selectedProduct.getName());
             }
         } else {
-            showAlert.setMessage("Please select a product.");
+            showAlert.setMessage("Kérem, válasszon ki egy terméket.");
             showAlert.execute();
+            logger.warn("Nincs termék kiválasztva.");
         }
     }
 

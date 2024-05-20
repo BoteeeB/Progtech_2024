@@ -8,9 +8,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.*;
 
 public class VasarloController extends databaseConnection {
+
+    private static final Logger logger = LogManager.getLogger(VasarloController.class);
 
     @FXML
     private ListView<Product> productList;
@@ -44,24 +49,26 @@ public class VasarloController extends databaseConnection {
     private void handleAddToCart() {
         AddToCart newCart = new AddToCart(products,productList,quantityField,cart,totalPriceLabel,userBalanceLabel);
         newCart.execute();
+        logger.info("A kosárba helyezés sikeres.");
     }
 
     @FXML
     private void handleCheckout() {
         int totalPrice = cart.stream().mapToInt(Product::getPrice).sum();
-        int userMoney = getUserMoney(); // Felhasználó egyenlegének lekérése az adatbázisból
+        int userMoney = getUserMoney();
         if (userMoney >= totalPrice) {
             int newBalance = userMoney - totalPrice;
-            updateUserMoney(newBalance); // Felhasználó egyenlegének frissítése az adatbázisban
-            cart.clear(); // Kosár ürítése
-            // Termék mennyiségének frissítése az adatbázisban
+            updateUserMoney(newBalance);
+            cart.clear();
             cart.forEach(product -> updateProductQuantity(product, -1));
-            products.clear(); // Termékek listájának frissítése a felhasználói felületen
+            products.clear();
             loadData();
             updateTotalPrice();
             showAlert("Total Price: $" + totalPrice);
+            logger.info("Sikeres vásárlás. Összesen fizetendő: " + totalPrice + " Ft");
         } else {
             showAlert("Insufficient funds!");
+            logger.warn("Nincs elegendő egyenleg a vásárláshoz.");
         }
     }
 
@@ -74,11 +81,12 @@ public class VasarloController extends databaseConnection {
     private void updateUserMoney(int newBalance) {
         UpdateUserMoney newMoney = new UpdateUserMoney(newBalance);
         newMoney.execute();
+        logger.info("Felhasználó egyenlegének frissítése. Új egyenleg: " + newBalance + " Ft");
     }
 
     private void updateUserBalance() {
         int userMoney = getUserMoney();
-        userBalanceLabel.setText("Egyenleg: " + userMoney + " Ft");
+        userBalanceLabel.setText("Balance: " + userMoney + " Ft");
     }
 
 
@@ -86,6 +94,7 @@ public class VasarloController extends databaseConnection {
     private void updateProductQuantity(Product product, int quantityChange) {
         UpdateProductAmount newProductQuantity = new UpdateProductAmount(product, quantityChange);
         newProductQuantity.execute();
+        logger.info(product.getName() + " termék mennyiségének frissítése. Mennyiség változás: " + quantityChange);
     }
 
 
@@ -93,17 +102,20 @@ public class VasarloController extends databaseConnection {
     private void loadData() {
         LoadProducts newProducts = new LoadProducts(products);
         newProducts.execute();
+        logger.info("Termékek betöltése.");
     }
 
 
     private void updateTotalPrice() {
         UpdateTotalPrice newTotal = new UpdateTotalPrice(cart,totalPriceLabel,userBalanceLabel);
         newTotal.execute();
+        logger.info("Teljes vásárlási összeg frissítése.");
     }
 
 
     private void showAlert(String message) {
         ShowAlert newAlert = new ShowAlert(message);
         newAlert.execute();
+        logger.warn("Figyelmeztetés: " + message);
     }
 }

@@ -21,9 +21,9 @@ public class UpdateTotalPrice implements CustomerFactory {
     @Override
     public void execute() {
         int totalPrice = cart.stream().mapToInt(Product::getPrice).sum();
-        totalPriceLabel.setText("Végösszeg: " + totalPrice + " Ft");
+        totalPriceLabel.setText("Total Price: " + totalPrice + " Ft");
         int userMoney = getUserMoney.returnExecute();
-        userBalanceLabel.setText("Egyenleg: " + userMoney + " Ft");
+        userBalanceLabel.setText("Balance: " + userMoney + " Ft");
     }
 
     @Override
