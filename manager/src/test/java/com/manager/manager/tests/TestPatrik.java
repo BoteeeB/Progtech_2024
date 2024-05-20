@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,11 @@ public class TestPatrik extends ApplicationTest{
     private ObservableList<Product> products;
 
     private AddProduct addProduct;
+
+    @Override
+    public void start(Stage stage) {
+        // This method needs to be overridden, but you can leave it empty if you don't need to use the stage.
+    }
 
 
     @BeforeEach
