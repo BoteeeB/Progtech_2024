@@ -19,8 +19,8 @@ public class AddProduct extends databaseConnection implements ProductFactory {
     private ListView<Product> productList;
     private ObservableList<Product> products;
 
-    private SaveData newSaveData;
-    private ClearInputFields newClear;
+    public SaveData newSaveData;
+    public ClearInputFields newClear;
 
     public AddProduct(TextField productNameField, TextField priceField, TextField quantityField, ListView<Product> productList, ObservableList<Product> products){
         this.productNameField = productNameField;
