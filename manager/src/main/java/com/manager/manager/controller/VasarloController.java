@@ -18,17 +18,17 @@ public class VasarloController extends databaseConnection {
     private static final Logger logger = LogManager.getLogger(VasarloController.class);
 
     @FXML
-    private ListView<Product> productList;
+    public ListView<Product> productList;
 
     @FXML
-    private TextField quantityField;
+    public TextField quantityField;
 
     @FXML
     private Label totalPriceLabel;
     @FXML
     private Label userBalanceLabel;
 
-    private ObservableList<Product> products;
+    public ObservableList<Product> products;
 
     private ObservableList<Product> cart;
 
@@ -38,7 +38,7 @@ public class VasarloController extends databaseConnection {
     }
 
     @FXML
-    private void initialize() {
+    public void initialize() {
         productList.setItems(products);
         loadData();
         updateTotalPrice();
@@ -46,7 +46,7 @@ public class VasarloController extends databaseConnection {
     }
 
     @FXML
-    private void handleAddToCart() {
+    public void handleAddToCart() {
         AddToCart newCart = new AddToCart(products,productList,quantityField,cart,totalPriceLabel,userBalanceLabel);
         newCart.execute();
         logger.info("A kosárba helyezés sikeres.");

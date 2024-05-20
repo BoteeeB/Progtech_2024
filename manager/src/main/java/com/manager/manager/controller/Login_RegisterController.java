@@ -22,11 +22,9 @@ public class Login_RegisterController {
     private void handleLogin() {
         Authentication login = new Login(usernameField, passwordField);
 
-        // Dekorátorok alkalmazása
         login = new LoggingDecorator(login);
-        login = new AuthorizationDecorator(login, false); // A bejelentkezéshez nem szükséges admin jogosultság
+        login = new AuthorizationDecorator(login, false);
 
-        // Művelet végrehajtása
         login.execute();
     }
 
@@ -34,11 +32,9 @@ public class Login_RegisterController {
     private void handleRegister() {
         Authentication register = new Register(usernameField, passwordField);
 
-        // Dekorátorok alkalmazása
         register = new LoggingDecorator(register);
-        register = new RegistrationDecorator(register); // Jogosultság ellenőrzés regisztrációhoz
+        register = new RegistrationDecorator(register);
 
-        // Művelet végrehajtása
         register.execute();
     }
 }
