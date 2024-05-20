@@ -23,8 +23,9 @@ public class AddToCart extends databaseConnection implements CustomerFactory {
     private String message;
     private UpdateTotalPrice updateTotalPrice;
     private ShowAlert showAlert;
+    private boolean isTestEnvironment;
 
-    public AddToCart(ObservableList<Product> products, ListView<Product> productList, TextField quantityField, ObservableList<Product> cart, Label totalPriceLabel, Label userBalanceLabel){
+    public AddToCart(ObservableList<Product> products, ListView<Product> productList, TextField quantityField, ObservableList<Product> cart, Label totalPriceLabel, Label userBalanceLabel, boolean isTestEnvironment){
         this.products = products;
         this.productList = productList;
         this.quantityField = quantityField;
@@ -33,6 +34,7 @@ public class AddToCart extends databaseConnection implements CustomerFactory {
         this.userBalanceLabel = userBalanceLabel;
         this.updateTotalPrice = new UpdateTotalPrice(cart, totalPriceLabel, userBalanceLabel);
         this.showAlert = new ShowAlert(message);
+        this.isTestEnvironment = isTestEnvironment;
     }
 
     @Override
@@ -52,18 +54,24 @@ public class AddToCart extends databaseConnection implements CustomerFactory {
 
                     logger.info(quantity + " darab " + selectedProduct.getName() + " hozzáadva a kosárhoz.");
                 } else {
-                    showAlert.setMessage("Érvénytelen mennyiség.");
-                    showAlert.execute();
+                    if (!isTestEnvironment) {
+                        showAlert.setMessage("Érvénytelen mennyiség.");
+                        showAlert.execute();
+                    }
                     logger.warn("Érvénytelen mennyiség megadva a következő termékhez: " + selectedProduct.getName());
                 }
             } catch (NumberFormatException e) {
-                showAlert.setMessage("Kérem, adjon meg érvényes számot a mennyiséghez.");
-                showAlert.execute();
+                if (!isTestEnvironment) {
+                    showAlert.setMessage("Kérem, adjon meg érvényes számot a mennyiséghez.");
+                    showAlert.execute();
+                }
                 logger.error("Érvénytelen mennyiség formátum megadva a következő termékhez: " + selectedProduct.getName());
             }
         } else {
-            showAlert.setMessage("Kérem, válasszon ki egy terméket.");
-            showAlert.execute();
+            if (!isTestEnvironment) {
+                showAlert.setMessage("Kérem, válasszon ki egy terméket.");
+                showAlert.execute();
+            }
             logger.warn("Nincs termék kiválasztva.");
         }
     }

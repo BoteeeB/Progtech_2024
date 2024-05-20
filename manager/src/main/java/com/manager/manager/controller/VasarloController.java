@@ -27,6 +27,7 @@ public class VasarloController extends databaseConnection {
     private Label totalPriceLabel;
     @FXML
     private Label userBalanceLabel;
+    private boolean isTestEnvironment;
 
     public ObservableList<Product> products;
 
@@ -47,7 +48,7 @@ public class VasarloController extends databaseConnection {
 
     @FXML
     public void handleAddToCart() {
-        AddToCart newCart = new AddToCart(products,productList,quantityField,cart,totalPriceLabel,userBalanceLabel);
+        AddToCart newCart = new AddToCart(products,productList,quantityField,cart,totalPriceLabel,userBalanceLabel, isTestEnvironment);
         newCart.execute();
         logger.info("A kosárba helyezés sikeres.");
     }
