@@ -1,6 +1,7 @@
-package com.manager.manager.customercommands;
+package com.manager.manager.tests;
 
 import com.manager.manager.Products.Product;
+import com.manager.manager.customercommands.LoadProducts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.BeforeEach;
