@@ -35,20 +35,9 @@ public class TestClearFields extends ApplicationTest {
 
     @Test
     public void testClearInputFields() {
-        // Set up mock behavior
-        // No behavior to set up for mock fields
-
-        // Call method to be tested
         clearInputFields.clearInputFields();
-
-        // Verify that clear() method was called on each TextField
         assertEquals("", mockProductNameField.getText());
         assertEquals("", mockPriceField.getText());
         assertEquals("", mockQuantityField.getText());
-
-        // Verify that clearSelection() method was called on productList
-        // Assuming the method clearSelection() clears the selection
-        // You may need to adjust this based on the actual behavior of the ListView
-        // Alternatively, you can use Mockito to verify method invocations
     }
 }

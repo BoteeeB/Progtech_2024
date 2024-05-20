@@ -3,6 +3,7 @@ package com.manager.manager.admincommands;
 import com.manager.manager.Interfaces.ProductFactory;
 import com.manager.manager.Products.Product;
 import com.manager.manager.abstraction.databaseConnection;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -13,9 +14,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Optional;
 
-public class EmergenyDeleteProduct extends databaseConnection implements ProductFactory {
+public class EmergencyDeleteProduct extends databaseConnection implements ProductFactory {
 
-    private static final Logger logger = LogManager.getLogger(EmergenyDeleteProduct.class);
+    private static final Logger logger = LogManager.getLogger(EmergencyDeleteProduct.class);
 
     private TextField productNameField;
     private TextField priceField;
@@ -26,7 +27,7 @@ public class EmergenyDeleteProduct extends databaseConnection implements Product
     private SaveData newSaveData;
     private ClearInputFields newClear;
 
-    public EmergenyDeleteProduct(TextField productNameField, TextField priceField, TextField quantityField, ListView<Product> productList, ObservableList<Product> products){
+    public EmergencyDeleteProduct(TextField productNameField, TextField priceField, TextField quantityField, ListView<Product> productList, ObservableList<Product> products){
         this.productNameField = productNameField;
         this.priceField = priceField;
         this.quantityField = quantityField;
@@ -39,17 +40,18 @@ public class EmergenyDeleteProduct extends databaseConnection implements Product
 
     @Override
     public void execute() {
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmation.setTitle("Emergency Delete");
-        confirmation.setHeaderText("Warning: This will delete all items!");
-        confirmation.setContentText("Do you want to proceed with deleting everything?");
+        Platform.runLater(() -> {
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmation.setTitle("Emergency Delete");
+            confirmation.setHeaderText("Warning: This will delete all items!");
+            confirmation.setContentText("Do you want to proceed with deleting everything?");
 
-        Optional<ButtonType> result = confirmation.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            products.clear();
-            newClear.clearInputFields();
+            Optional<ButtonType> result = confirmation.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                products.clear();
+                newClear.clearInputFields();
 
-            logger.info("Összes termék törölve");
-        }
+                logger.info("Összes termék törölve");
+            }});
     }
 }

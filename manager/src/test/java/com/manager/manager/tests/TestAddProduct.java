@@ -49,15 +49,15 @@ public class TestAddProduct extends ApplicationTest {
 
     @Test
     public void testExecute_AddsProduct_WhenFieldsAreValid() {
-        // Arrange
+
         productNameField.setText("TestProduct");
         priceField.setText("19.99");
         quantityField.setText("10");
 
-        // Act
+
         addProduct.execute();
 
-        // Assert
+
         Assertions.assertEquals(1, products.size());
         Product addedProduct = products.get(0);
         Assertions.assertEquals("TestProduct", addedProduct.getName());
@@ -69,15 +69,15 @@ public class TestAddProduct extends ApplicationTest {
 
     @Test
     public void testExecute_DoesNotAddProduct_WhenFieldsAreInvalid() {
-        // Arrange
+
         productNameField.setText("");
         priceField.setText("invalidPrice");
         quantityField.setText("invalidQuantity");
 
-        // Act
+
         addProduct.execute();
 
-        // Assert
+
         Assertions.assertEquals(0, products.size());
         verify(mockSaveData, never()).execute();
         verify(mockClear, never()).clearInputFields();

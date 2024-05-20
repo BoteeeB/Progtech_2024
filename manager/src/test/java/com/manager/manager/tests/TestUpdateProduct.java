@@ -37,14 +37,13 @@ public class TestUpdateProduct extends ApplicationTest {
         MockitoAnnotations.openMocks(this);
         products = FXCollections.observableArrayList();
 
-        // Mock the behavior of ListView to return a non-null selection model
         MultipleSelectionModel<Product> mockSelectionModel = mock(MultipleSelectionModel.class);
         when(mockProductList.getSelectionModel()).thenReturn(mockSelectionModel);
     }
 
     @Test
     public void testExecute_WithValidInput() {
-        // Arrange
+
         Product existingProduct = new Product("Existing Product", 10, 5);
         products.add(existingProduct);
 
@@ -61,10 +60,8 @@ public class TestUpdateProduct extends ApplicationTest {
                 products
         );
 
-        // Act
         updateProduct.execute();
 
-        // Assert
         assertEquals("Updated Product", existingProduct.getName());
         assertEquals(20, existingProduct.getPrice());
         assertEquals(8, existingProduct.getQuantity());
@@ -72,7 +69,6 @@ public class TestUpdateProduct extends ApplicationTest {
 
     @Test
     public void testExecute_WithEmptyInput() {
-        // Arrange
         when(mockProductList.getSelectionModel().getSelectedItem()).thenReturn(null);
 
         UpdateProduct updateProduct = new UpdateProduct(
@@ -82,12 +78,9 @@ public class TestUpdateProduct extends ApplicationTest {
                 mockProductList,
                 products
         );
-
-        // Act
+        
         updateProduct.execute();
 
-        // Assert
-        // Ensure that no changes were made to products list when no item selected
         assertTrue(products.isEmpty());
     }
 }

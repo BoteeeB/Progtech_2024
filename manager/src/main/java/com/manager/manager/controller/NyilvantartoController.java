@@ -1,7 +1,6 @@
 package com.manager.manager.controller;
 
 import com.manager.manager.Products.Product;
-import com.manager.manager.abstraction.databaseConnection;
 import com.manager.manager.admincommands.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -65,7 +64,7 @@ public class NyilvantartoController {
 
     @FXML
     private void handleEmergencyDelete() {
-        EmergenyDeleteProduct emergencyDelete = new EmergenyDeleteProduct(productNameField, priceField, quantityField,productList, products);
+        EmergencyDeleteProduct emergencyDelete = new EmergencyDeleteProduct(productNameField, priceField, quantityField,productList, products);
         emergencyDelete.execute();
     }
 
