@@ -35,7 +35,8 @@ public class LoadProducts extends databaseConnection implements CustomerFactory 
                 String name = resultSet.getString("name");
                 int price = resultSet.getInt("price");
                 int quantity = resultSet.getInt("quantity");
-                products.add(new Product(name, price, quantity));
+                int type = resultSet.getInt("type");
+                products.add(new Product(name, price, quantity, type));
             }
         } catch (SQLException e) {
             e.printStackTrace();

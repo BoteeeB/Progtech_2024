@@ -17,6 +17,8 @@ public class NyilvantartoController {
     private TextField quantityField;
     @FXML
     private ListView<Product> productList;
+    @FXML
+    private ComboBox<String> myComboBox;
 
     private ObservableList<Product> products = FXCollections.observableArrayList();
     private SaveData newSaveData;
@@ -32,18 +34,19 @@ public class NyilvantartoController {
                 productNameField.setText(newValue.getName());
                 priceField.setText(String.valueOf(newValue.getPrice()));
                 quantityField.setText(String.valueOf(newValue.getQuantity()));
+                myComboBox.setValue(String.valueOf(newValue.getType()));
             }
         });
 
         this.newSaveData = new SaveData(productNameField, priceField, quantityField, productList, products);
         this.newClear = new ClearInputFields(productNameField, priceField, quantityField, productList);
-
+        loadCombobox();
         loadData();
     }
 
     @FXML
     private void handleAdd() {
-        AddProduct addProduct = new AddProduct(productNameField, priceField, quantityField,productList, products);
+        AddProduct addProduct = new AddProduct(productNameField, priceField, quantityField,productList, products,myComboBox);
         addProduct.execute();
     }
 
@@ -53,7 +56,11 @@ public class NyilvantartoController {
         updateProduct.execute();
     }
 
-
+    @FXML
+    private void loadCombobox(){
+        LoadCombobox loaddata = new LoadCombobox();
+        loaddata.loadItems(myComboBox);
+    }
 
     @FXML
     private void handleDelete() {

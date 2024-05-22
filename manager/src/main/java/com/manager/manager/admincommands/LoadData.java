@@ -23,8 +23,9 @@ public class LoadData extends databaseConnection implements ProductFactory {
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
                 int price = resultSet.getInt("price");
-                int quantity = resultSet.getInt("quantity"); // New field
-                products.add(new Product(name, price, quantity)); // New field
+                int quantity = resultSet.getInt("quantity");
+                int type = resultSet.getInt("type");// New field
+                products.add(new Product(name, price, quantity,type )); // New field
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -5,16 +5,17 @@ import java.io.Serializable;
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     private String name;
     private int price;
+    private int type;
 
     private int quantity;
 
-    public Product(String name, int price, int quantity) {
+    public Product(String name, int price, int quantity, int type) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this. type = type;
     }
 
     public String getName() {
@@ -35,7 +36,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return name + " - " + price+ " Ft" + " - " + quantity + " db";
+        return name + " - " + price+ " Ft" + " - " + quantity + " db" + " - " + getTypeString(type);
     }
 
     public int getQuantity() {
@@ -45,4 +46,24 @@ public class Product implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+    private String getTypeString(int typeID){
+        switch (typeID){
+            case 1:
+                return "elektronikai";
+            case 2:
+                return "háztartási";
+            case 3:
+                return "higéniai";
+            default:
+                return "unknown";
+        }
+    }
+
 }

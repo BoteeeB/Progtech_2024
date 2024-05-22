@@ -29,7 +29,7 @@ public class SaveData extends databaseConnection implements ProductFactory {
     public void execute() {
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement deleteStatement = connection.createStatement();
-             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO termekek (name, price, quantity) VALUES (?, ?, ?)")) {
+             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO termekek (name, price, quantity, type) VALUES (?, ?, ?, ?)")) {
 
             deleteStatement.executeUpdate("DELETE FROM termekek");
 
@@ -37,6 +37,7 @@ public class SaveData extends databaseConnection implements ProductFactory {
                 insertStatement.setString(1, product.getName());
                 insertStatement.setDouble(2, product.getPrice());
                 insertStatement.setInt(3, product.getQuantity());
+                insertStatement.setInt(4,product.getType());
                 insertStatement.executeUpdate();
             }
         } catch (SQLException e) {

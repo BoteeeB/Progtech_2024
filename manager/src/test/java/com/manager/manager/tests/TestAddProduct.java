@@ -4,6 +4,7 @@ import com.manager.manager.admincommands.ClearInputFields;
 import com.manager.manager.admincommands.SaveData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +26,7 @@ public class TestAddProduct extends ApplicationTest {
     private TextField quantityField;
     private ListView<Product> productList;
     private ObservableList<Product> products;
+    private ComboBox<String> myComboBox;
 
     @Mock
     private SaveData mockSaveData;
@@ -41,8 +43,9 @@ public class TestAddProduct extends ApplicationTest {
         priceField = new TextField();
         quantityField = new TextField();
         productList = new ListView<>();
+        myComboBox = new ComboBox<>();
         products = FXCollections.observableArrayList();
-        addProduct = new AddProduct(productNameField, priceField, quantityField, productList, products);
+        addProduct = new AddProduct(productNameField, priceField, quantityField, productList, products,myComboBox);
         addProduct.newSaveData = mockSaveData;
         addProduct.newClear = mockClear;
     }

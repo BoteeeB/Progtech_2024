@@ -78,7 +78,7 @@ public class TestUpdateProduct extends ApplicationTest {
                 mockProductList,
                 products
         );
-        
+
         updateProduct.execute();
 
         assertTrue(products.isEmpty());
