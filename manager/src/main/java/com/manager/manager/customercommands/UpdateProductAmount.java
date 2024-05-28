@@ -22,7 +22,7 @@ public class UpdateProductAmount extends databaseConnection implements CustomerF
     public void execute() {
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              PreparedStatement statement = connection.prepareStatement("UPDATE termekek SET quantity = quantity - ? WHERE name = ?")) {
-            statement.setInt(1, Math.abs(quantityChange)); // Negatív érték a levonáshoz
+            statement.setInt(1, Math.abs(quantityChange));
             statement.setString(2, product.getName());
             statement.executeUpdate();
         } catch (SQLException e) {

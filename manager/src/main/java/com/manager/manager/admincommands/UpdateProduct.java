@@ -44,25 +44,25 @@ public class UpdateProduct extends databaseConnection implements ProductFactory 
         if (selectedProduct != null) {
             String newName = productNameField.getText().trim();
             String newPriceText = priceField.getText().trim();
-            String newQuantityText = quantityField.getText().trim(); // New field
+            String newQuantityText = quantityField.getText().trim();
 
             if (!newName.isEmpty() && !newPriceText.isEmpty() && !newQuantityText.isEmpty()) {
                 try {
                     int newPrice = Integer.parseInt(newPriceText);
-                    int newQuantity = Integer.parseInt(newQuantityText); // New field
+                    int newQuantity = Integer.parseInt(newQuantityText);
 
                     try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                          PreparedStatement statement = connection.prepareStatement("UPDATE termekek SET name = ?, price = ?, quantity = ? WHERE name = ?")) {
 
                         statement.setString(1, newName);
                         statement.setDouble(2, newPrice);
-                        statement.setInt(3, newQuantity); // New field
+                        statement.setInt(3, newQuantity);
                         statement.setString(4, selectedProduct.getName());
                         statement.executeUpdate();
 
                         selectedProduct.setName(newName);
                         selectedProduct.setPrice(newPrice);
-                        selectedProduct.setQuantity(newQuantity); // New field
+                        selectedProduct.setQuantity(newQuantity);
 
                         logger.info("Termék frissítve: " + newName);
                     }

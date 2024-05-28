@@ -14,13 +14,12 @@ public class AuthorizationDecorator extends AuthenticationDecorator {
 
 
     private boolean ellenorizJogosultsag() {
-        // Ellenőrizzük a felhasználó típusát, ha admin jogosultság szükséges
         if (requiresAdmin) {
             int userType = UserSession.getUserType();
             System.out.println("Jogosultság ellenőrzése...");
-            return userType == 1; // Csak akkor sikeres, ha admin (userType == 1)
+            return userType == 1;
         }
-        return true; // Ha nem szükséges admin jogosultság, mindig sikeres
+        return true;
     }
 
     @Override

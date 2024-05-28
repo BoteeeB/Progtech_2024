@@ -18,7 +18,6 @@ public class RegistrationDecorator extends AuthenticationDecorator {
     }
 
     private boolean ellenorizJogosultsag() {
-        // Ellenőrizzük, hogy a felhasználónév egyedi-e
         String username = wrapped.getUsername();
         try (Connection connection = DriverManager.getConnection(databaseConnection.URL, databaseConnection.USERNAME, databaseConnection.PASSWORD);
              PreparedStatement statement = connection.prepareStatement("SELECT COUNT(*) FROM felhasznalok WHERE username = ?")) {
@@ -29,7 +28,6 @@ public class RegistrationDecorator extends AuthenticationDecorator {
             if (resultSet.next()) {
                 int count = resultSet.getInt(1);
                 if (count > 0) {
-                    // A felhasználónév már létezik
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Regisztráció Hiba");
                     alert.setHeaderText(null);
@@ -41,7 +39,7 @@ public class RegistrationDecorator extends AuthenticationDecorator {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return true; // A felhasználónév egyedi
+        return true;
     }
 
     @Override

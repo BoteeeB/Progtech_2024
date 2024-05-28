@@ -24,8 +24,8 @@ public class LoadData extends databaseConnection implements ProductFactory {
                 String name = resultSet.getString("name");
                 int price = resultSet.getInt("price");
                 int quantity = resultSet.getInt("quantity");
-                int type = resultSet.getInt("type");// New field
-                products.add(new Product(name, price, quantity,type )); // New field
+                int type = resultSet.getInt("type");
+                products.add(new Product(name, price, quantity,type ));
             }
         } catch (SQLException e) {
             e.printStackTrace();

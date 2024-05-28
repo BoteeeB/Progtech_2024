@@ -38,7 +38,7 @@ public class TestAddToCart extends ApplicationTest {
 
     @Test
     public void testAddToCart() {
-        Product product = new Product("Test Product", 100, 10);
+        Product product = new Product("Test Product", 100, 10, 2);
         products.add(product);
         productList.getSelectionModel().select(0);
         quantityField.setText("5");

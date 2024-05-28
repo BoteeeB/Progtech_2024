@@ -38,7 +38,7 @@ public class TestAddToCartInvalidQuantity extends ApplicationTest {
 
     @Test
     public void testAddToCartInvalidQuantity() {
-        Product product = new Product("Test Product", 100, 10);
+        Product product = new Product("Test Product", 100, 10, 2);
         products.add(product);
         productList.getSelectionModel().select(0);
         quantityField.setText("15");

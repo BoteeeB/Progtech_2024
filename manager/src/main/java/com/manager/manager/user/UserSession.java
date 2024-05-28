@@ -14,7 +14,7 @@ public class UserSession extends databaseConnection {
 
     public static void setLoggedInUserId(int userId) {
         loggedInUserId = userId;
-        loadUserType(); // Betöltjük a felhasználó típusát
+        loadUserType();
     }
 
     public static int getLoggedInUserId() {
@@ -30,7 +30,6 @@ public class UserSession extends databaseConnection {
     }
 
     private static void loadUserType() {
-        // Az adatbázisból betöltjük a felhasználó típusát
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              PreparedStatement statement = connection.prepareStatement("SELECT user_type FROM felhasznalok WHERE id = ?")) {
 

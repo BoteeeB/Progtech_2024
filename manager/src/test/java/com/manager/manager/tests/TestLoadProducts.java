@@ -37,7 +37,7 @@ public class TestLoadProducts {
 
         products = FXCollections.observableArrayList();
         loadProducts = new LoadProducts(products);
-        loadProducts.setConnection(connection); // feltételezve, hogy van ilyen metódus az osztályban
+        loadProducts.setConnection(connection);
     }
 
     @Test
